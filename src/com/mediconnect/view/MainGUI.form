@@ -17,12 +17,14 @@
           <background color="-5584940"/>
           <minimumSize width="297" height="118"/>
         </properties>
-        <border type="none"/>
+        <border type="empty">
+          <size top="10" left="0" bottom="0" right="0"/>
+        </border>
         <children>
           <component id="1dc63" class="javax.swing.JLabel" binding="lblTitle">
             <constraints border-constraint="North"/>
             <properties>
-              <font name="Segoe UI Semibold" size="48"/>
+              <font name="Bahnschrift" size="48" style="1"/>
               <foreground color="-16777216"/>
               <horizontalAlignment value="0"/>
               <horizontalTextPosition value="0"/>
@@ -84,11 +86,11 @@
                   <enabled value="true"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="10"/>
-                  <icon value="img/MediConnect-dark.png"/>
+                  <icon value="img/MediConnect-logo (Mediano).png"/>
                   <maximumSize width="171" height="171"/>
                   <minimumSize width="171" height="171"/>
                   <opaque value="false"/>
-                  <preferredSize width="171" height="171"/>
+                  <preferredSize width="215" height="172"/>
                   <requestFocusEnabled value="true"/>
                   <text value=""/>
                   <visible value="true"/>
@@ -100,7 +102,8 @@
               <component id="e821c" class="javax.swing.JLabel" binding="lblBienvenida">
                 <constraints/>
                 <properties>
-                  <font name="Segoe UI Semibold" size="48"/>
+                  <font name="Bahnschrift" size="48" style="1"/>
+                  <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
                   <text value="Bienvenido a MediConnect"/>
@@ -109,7 +112,8 @@
               <component id="d2087" class="javax.swing.JLabel" binding="lblInstruccion">
                 <constraints/>
                 <properties>
-                  <font name="Segoe UI Semibold" size="24"/>
+                  <font name="Microsoft Tai Le" size="24" style="0"/>
+                  <foreground color="-16777216"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
                   <text value="Inicia sesión con tu cuenta, si no tienes una, ¡puedes crearla!"/>
@@ -123,10 +127,11 @@
                   <borderPainted value="false"/>
                   <contentAreaFilled value="true"/>
                   <focusPainted value="false"/>
-                  <font name="Segoe UI Semibold" size="18"/>
-                  <preferredSize width="120" height="40"/>
+                  <font name="Microsoft Tai Le" size="18" style="0"/>
+                  <foreground color="-16777216"/>
+                  <preferredSize width="140" height="40"/>
                   <rolloverEnabled value="false"/>
-                  <text value="Log in"/>
+                  <text value="Inicia Sesión"/>
                 </properties>
               </component>
               <component id="7484d" class="javax.swing.JButton" binding="btnRegistro">
@@ -136,8 +141,9 @@
                   <borderPainted value="false"/>
                   <contentAreaFilled value="true"/>
                   <focusPainted value="false"/>
-                  <font name="Segoe UI Semibold" size="18"/>
-                  <preferredSize width="120" height="40"/>
+                  <font name="Microsoft Tai Le" size="18" style="0"/>
+                  <foreground color="-16777216"/>
+                  <preferredSize width="140" height="40"/>
                   <text value="Registrate"/>
                 </properties>
               </component>
