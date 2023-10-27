@@ -37,10 +37,12 @@
             <properties>
               <background color="-10312014"/>
               <enabled value="true"/>
-              <preferredSize width="10" height="40"/>
+              <preferredSize width="10" height="43"/>
               <visible value="true"/>
             </properties>
-            <border type="none"/>
+            <border type="none">
+              <size top="0" left="0" bottom="0" right="0"/>
+            </border>
             <children/>
           </grid>
         </children>

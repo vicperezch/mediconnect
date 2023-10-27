@@ -5,7 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Diego Flores
+ * @version 2.0
+ * @creationDate 13 de octubre de 2023
+ * @lastModified 26 de octubre de 2023
+ * @description Clase encargada de manejar la vista principal
+ */
+
 public class MainGUI {
+
+    //Atributos de la clase
     private static JFrame myFrame;
     private JLabel lblTitle;
     private JLabel lblBienvenida;
@@ -18,12 +28,18 @@ public class MainGUI {
     private JButton btnRegistro;
     private JLabel lblLogo;
 
+    /**
+     * @description Constructor de la clase que contiene a los listener
+     */
     public MainGUI(){
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Aqui debe ir la referencia al JFrame de la vista de Login
-                JOptionPane.showMessageDialog(null, "Aun no puedes logearte", "AVISO", JOptionPane.WARNING_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Aun no puedes logearte", "AVISO", JOptionPane.WARNING_MESSAGE);
+                LoginGUI myLogin = new LoginGUI();
+                myLogin.setVisible();
+                myFrame.dispose();
             }
         });
         btnRegistro.addActionListener(new ActionListener() {
@@ -35,10 +51,17 @@ public class MainGUI {
         });
     }
 
+    /**
+     * @description Metodo main que se encarga de iniciar el programa
+     * @param args
+     */
     public static void main(String[] args) {
         activate();
     }
 
+    /**
+     * @description Metodo que se utiliza para llamar a la vista desde otra
+     */
     public static void activate(){
         myFrame = new JFrame("MediConnect");
         myFrame.setContentPane(new MainGUI().pnlMain);
