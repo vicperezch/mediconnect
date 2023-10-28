@@ -1,60 +1,54 @@
 package com.mediconnect.view;
 
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 
 /**
- * @author Diego Flores
+ * @author Juan Solís
  * @version 1.0
  * @creationDate 26 de octubre de 2023
- * @lastModified 26 de octubre de 2023
- * @description Clase encargada de manejar la vista de login
+ * @lastModified 27 de octubre de 2023
+ * @description Clase encargada de manejar la vista de registro de los usuarios
  */
-public class LoginGUI {
 
-    //Atributos de la clase
+public class RegisterGUI {
+    // Atributos de la clase
     private static JFrame myFrame;
-    private JPanel pnlLogin;
+    private JPanel pnlRegister;
     private JPanel pnlHeader;
-    private JPanel pnlBody;
-    private JPanel pnlForm;
-    private JTextField textField1;
-    private JPasswordField passwordField1;
-    private JButton btnLogin;
-    private JButton btnRegistrarse;
     private JLabel lblTitle;
     private JLabel lblSubtitle;
-    private JButton btnRegresar;
+    private JPanel pnlBody;
+    private JPanel pnlForm;
+    private JTextField emailField;
+    private JPasswordField passwordField;
+    private JButton btnCancelar;
+    private JButton btnRegistrarse;
+    private JRadioButton medicoRadioButton;
+    private JRadioButton pacienteRadioButton;
+    private JTextField apellidoField;
+    private JTextField nombreField;
 
     /**
-     * @description Constructor de la clase que contiene todos los listener
+     * @description Constructor de la clase que contiene a los listener
      */
-    public LoginGUI() {
-        btnLogin.addActionListener(new ActionListener() {
+    public RegisterGUI(){
+        btnCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Aqui se realizara la verificacion del login
-            }
-        });
-        btnRegistrarse.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RegisterGUI myRegister = new RegisterGUI();
-                myRegister.setVisible();
+                MainGUI myMain = new MainGUI();
+                myMain.setVisible();
                 myFrame.dispose();
             }
         });
-        btnRegresar.addActionListener(new ActionListener() {
+
+        btnRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.activate();
+                LoginGUI myLogin = new LoginGUI();
+                myLogin.setVisible();
                 myFrame.dispose();
             }
         });
@@ -63,9 +57,9 @@ public class LoginGUI {
     /**
      * @description Metodo que se encargara de cargar la vista cuando sea llamada desde otra
      */
-    public void setVisible(){
+    public void setVisible() {
         myFrame = new JFrame("MediConnect");
-        myFrame.setContentPane(new LoginGUI().pnlLogin);
+        myFrame.setContentPane(new RegisterGUI().pnlRegister);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.pack();
         Dimension tamanioPantalla= Toolkit.getDefaultToolkit().getScreenSize();
@@ -78,5 +72,4 @@ public class LoginGUI {
         myFrame.setResizable(false);
         myFrame.setVisible(true);
     }
-
 }
