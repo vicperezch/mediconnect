@@ -150,8 +150,8 @@ public class CartaMedicaController {
      * Método que edita a un exámen de la carta médica
      * 
      * @param fecha La fecha en la cuál se redactó el diagnóstico
-     * @param medio El médico que redactó el diagnóstico
-     * @param nuevoDianostico El nuevo objeto Diagnostico
+     * @param medico El médico que redactó el diagnóstico
+     * @param nuevoDiagnostico El nuevo objeto Diagnostico
     */
     public void editarExamen(Date fecha, Medico medico, Diagnostico nuevoDiagnostico){
         ArrayList<Diagnostico> diagnosticos = cartaMedica.getExamenes();
