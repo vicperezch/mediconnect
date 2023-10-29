@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.mediconnect.view.PacienteGUI">
+  <grid id="27dc6" binding="pnlPaciente" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="1024" height="728"/>
+    </constraints>
+    <properties>
+      <minimumSize width="1024" height="728"/>
+      <preferredSize width="1024" height="728"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="f61f3" binding="pnlHeader" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-5584940"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="be0eb" class="javax.swing.JLabel" binding="lblTittle">
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-5578267"/>
+              <font name="Bahnschrift" size="48" style="1"/>
+              <foreground color="-13947600"/>
+              <horizontalAlignment value="0"/>
+              <text value="MediConnect"/>
+            </properties>
+          </component>
+          <grid id="8ee8a" binding="pnlSubheader" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints border-constraint="South"/>
+            <properties>
+              <background color="-10312014"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="29b4e" class="javax.swing.JLabel" binding="lblSubtittle">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <font name="Bahnschrift" size="28" style="0"/>
+                  <foreground color="-13947600"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="Paciente"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="ebd85" binding="pnlBody" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="empty">
+          <size top="50" left="100" bottom="50" right="100"/>
+        </border>
+        <children>
+          <grid id="36722" binding="pnlOptions" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="25" vgap="20">
+            <margin top="100" left="50" bottom="100" right="50"/>
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-10312014"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="d3237" class="javax.swing.JButton" binding="btnMedicinas">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-5578267"/>
+                  <icon value="img/Medicina-Icono.png"/>
+                  <margin top="20" left="15" bottom="20" right="15"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="f4d04" class="javax.swing.JButton" binding="btnCartaMedica">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-5578267"/>
+                  <icon value="img/CartaMedica-Icono.png"/>
+                  <margin top="20" left="15" bottom="20" right="15"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="43804" class="javax.swing.JButton" binding="btnProximasCitas">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-5578267"/>
+                  <icon value="img/Calendario-Icono.png"/>
+                  <margin top="20" left="15" bottom="20" right="15"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="7cb98" class="javax.swing.JLabel" binding="lblCartaMedica">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-5578267"/>
+                  <font name="Microsoft Tai Le" size="24" style="0"/>
+                  <foreground color="-16777216"/>
+                  <opaque value="false"/>
+                  <text value="Tu carta médica"/>
+                </properties>
+              </component>
+              <component id="4c132" class="javax.swing.JLabel" binding="lblProximasCitas">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Microsoft Tai Le" size="24" style="0"/>
+                  <foreground color="-16777216"/>
+                  <text value="Tus próximas citas"/>
+                </properties>
+              </component>
+              <component id="29ce4" class="javax.swing.JLabel" binding="lblMedicinas">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Microsoft Tai Le" size="24" style="0"/>
+                  <foreground color="-16777216"/>
+                  <text value="Tus medicinas"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
