@@ -27,20 +27,8 @@ public class MedicoController {
      * @return String con los pacientes
      */
     public String verPacientes() {
-        ArrayList<Paciente> pacientes = medico.getPacientes();
         String listaPacientes = "";
-
-        // Evalúa
-        if (!pacientes.isEmpty()) {
-            for (Paciente paciente : pacientes) {
-                listaPacientes += paciente.toString() + "\n";
-            }
-
-            return listaPacientes;
-
-        } else {
-            return "El médico no tiene ningún paciente asignado";
-        }
+         return listaPacientes;
     }
 
 

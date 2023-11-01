@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class CartaMedica {
     private ArrayList<String> enfermedades = new ArrayList<>();
     private ArrayList<String> alergias = new ArrayList<>();
-    private ArrayList<Diagnostico> examenes = new ArrayList<>();
+    private ArrayList<String> examenes = new ArrayList<>();
     private ArrayList<Receta> tratamientos = new ArrayList<>();
     
     /**
@@ -25,7 +25,7 @@ public class CartaMedica {
      * @param examenes Los examenes del usuario
      * @param tratamientos Los tratamientos del usuario
     */
-    public CartaMedica(ArrayList<String> enfermedades, ArrayList<String> alergias, ArrayList<Diagnostico> examenes,
+    public CartaMedica(ArrayList<String> enfermedades, ArrayList<String> alergias, ArrayList<String> examenes,
             ArrayList<Receta> tratamientos) {
         this.enfermedades = enfermedades;
         this.alergias = alergias;
@@ -69,7 +69,7 @@ public class CartaMedica {
      * Obtiene los examenes que le han realizado al usuario
      * @return Los examenes que le han realizado al usuario
     */
-    public ArrayList<Diagnostico> getExamenes() {
+    public ArrayList<String> getExamenes() {
         return examenes;
     }
 
@@ -77,7 +77,7 @@ public class CartaMedica {
      * Actualiza los examenes que le han realizado al usuario
      * @param examenes los examenes que le han realizado al usuario
     */
-    public void setExamenes(ArrayList<Diagnostico> examenes) {
+    public void setExamenes(ArrayList<String> examenes) {
         this.examenes = examenes;
     }
 

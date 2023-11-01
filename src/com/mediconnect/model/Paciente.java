@@ -10,8 +10,6 @@ package com.mediconnect.model;
  */
 
 public class Paciente extends Usuario {
-    private CartaMedica cartaMedica;
-
     /**
      * Método que agrega un nuevo Paciente al sistema
      * 
@@ -23,28 +21,8 @@ public class Paciente extends Usuario {
      * @param rol         Rol del paciente
      * @param cartaMedica Carta Médica del paciente
      */
-    public Paciente(String nombre, String apellido, String correo, String password, int id, String rol,
-            CartaMedica cartaMedica) {
+    public Paciente(String nombre, String apellido, String correo, String password, int id, String rol) {
         super(nombre, apellido, correo, password, id, rol);
-        this.cartaMedica = cartaMedica;
-    }
-
-    /**
-     * Obtiene la carta médica del paciente
-     * 
-     * @return Carta médica del paciente
-     */
-    public CartaMedica getCartaMedica() {
-        return cartaMedica;
-    }
-
-    /**
-     * Actualiza la carta médica del paciente
-     * 
-     * @param cartaMedica Carta médica del paciente
-     */
-    public void setCartaMedica(CartaMedica cartaMedica) {
-        this.cartaMedica = cartaMedica;
     }
 
     public void validarPasword() {
@@ -57,16 +35,6 @@ public class Paciente extends Usuario {
 
     public void validarRol() {
 
-    }
-
-    /**
-     * Devuelve un String que representa al paciente
-     * 
-     * @return String que representa al paciente
-     */
-    @Override
-    public String toString() {
-        return "Paciente [cartaMedica=" + cartaMedica + "]";
     }
 
 }

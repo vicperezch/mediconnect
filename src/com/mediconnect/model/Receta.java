@@ -13,7 +13,8 @@ import java.util.Date;
 public class Receta {
     private int numeroReceta;
     private Date fechaEmision;
-    private Medico medico;
+    private int idMedico;
+    private int idPaciente;
     private ArrayList<String> medicamentos;
     private String justificacionReceta;
     private String observaciones;
@@ -23,15 +24,17 @@ public class Receta {
      *
      * @param numeroReceta El número de la receta
      * @param fechaEmision Fecha en la que se emitió la receta
-     * @param medico Médico que realizó la receta
+     * @param idMedico EL id del médico que realizó la receta
+     * @param idPaciente El id del paciente que recibirá la receta
      * @param medicamentos Array con los medicamentos que contiene la receta
      * @param justificacionReceta La explicación del médico
      * @param observaciones Observaciones que realiza el médico
      */
-    public Receta(int numeroReceta, Date fechaEmision, Medico medico, ArrayList<String> medicamentos, String justificacionReceta, String observaciones) {
+    public Receta(int numeroReceta, Date fechaEmision, int idMedico, int idPaciente, ArrayList<String> medicamentos, String justificacionReceta, String observaciones) {
         this.numeroReceta = numeroReceta;
         this.fechaEmision = fechaEmision;
-        this.medico = medico;
+        this.idMedico = idMedico;
+        this.idPaciente = idPaciente;
         this.medicamentos = medicamentos;
         this.justificacionReceta = justificacionReceta;
         this.observaciones = observaciones;
@@ -71,18 +74,34 @@ public class Receta {
 
     /**
      * Obtiene el médico que realizó la receta
-     * @return El médico como instancia de la clase Medico
+     * @return El médico que realizó la receta
      */
-    public Medico getMedico() {
-        return medico;
+    public int getIdMedico() {
+        return idMedico;
     }
 
     /**
      * Actualiza el médico que realizó la receta
      * @param medico Nuevo médico
      */
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setIdMedico(int idMedico) {
+        this.idMedico = idMedico;
+    }
+
+    /**
+     * Obtiene el paciente al que se le dará la receta
+     * @return El paciente al que se le dará la receta
+     */
+    public int getIdPaciente() {
+        return idPaciente;
+    }
+
+    /**
+     * Actualiza el paciente que recibirá la receta
+     * @param paciente Nuevo paciente
+     */
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     /**

@@ -5,7 +5,6 @@ import com.mediconnect.model.Paciente;
 import com.mediconnect.model.Usuario;
 import com.mediconnect.model.Cita;
 import com.mediconnect.model.CartaMedica;
-import com.mediconnect.model.Diagnostico;
 import com.mediconnect.model.Receta;
 
 import java.io.*;

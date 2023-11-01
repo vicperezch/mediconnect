@@ -9,7 +9,6 @@ package com.mediconnect.controller;
 */
 
 import com.mediconnect.model.CartaMedica;
-import com.mediconnect.model.Diagnostico;
 import com.mediconnect.model.Medico;
 import com.mediconnect.model.Receta;
 
@@ -81,8 +80,8 @@ public class CartaMedicaController {
      * 
      * @param diagnostico El nuevo objeto Diagnostico que será agregado
     */
-    public void agregarExamen(Diagnostico diagnostico){
-        ArrayList<Diagnostico> diagnosticos = cartaMedica.getExamenes();
+    public void agregarExamen(String diagnostico){
+        ArrayList<String> diagnosticos = cartaMedica.getExamenes();
         diagnosticos.add(diagnostico);
         cartaMedica.setExamenes(diagnosticos);
     }
@@ -153,23 +152,8 @@ public class CartaMedicaController {
      * @param medico El médico que redactó el diagnóstico
      * @param nuevoDiagnostico El nuevo objeto Diagnostico
     */
-    public void editarExamen(Date fecha, Medico medico, Diagnostico nuevoDiagnostico){
-        ArrayList<Diagnostico> diagnosticos = cartaMedica.getExamenes();
-        boolean encontrado = false;
-
-        for (Diagnostico diagnosticoExistente : diagnosticos) {
-            if (diagnosticoExistente.getFecha().equals(fecha) && diagnosticoExistente.getMedico().equals(medico)) {
-                diagnosticos.set(diagnosticos.indexOf(diagnosticoExistente), nuevoDiagnostico);
-                encontrado = true;
-                break;
-            }
-        }
-
-        if (!encontrado) {
-            // Mensaje: No se encontró el exámen a editar
-        }
-
-        cartaMedica.setExamenes(diagnosticos);
+    public void editarExamen(Date fecha, Medico medico, String nuevoDiagnostico){
+        
     }
 
     /**
@@ -247,11 +231,11 @@ public class CartaMedicaController {
      * 
      * @param diagnosticoEliminar El objeto Diagnostico que será eliminado
     */
-    public void eliminarExamen(Diagnostico diagnosticoEliminar){
-        ArrayList<Diagnostico> diagnosticos = cartaMedica.getExamenes();
+    public void eliminarExamen(String diagnosticoEliminar){
+        ArrayList<String> diagnosticos = cartaMedica.getExamenes();
         boolean encontrado = false;
 
-        for (Diagnostico diagnostico : new ArrayList<>(diagnosticos)) {
+        for (String diagnostico : new ArrayList<>(diagnosticos)) {
             if (diagnostico.equals(diagnosticoEliminar)) {
                 diagnosticos.remove(diagnostico);
                 encontrado = true;

@@ -13,7 +13,8 @@ public class Cita {
 
     // Atributos de Cita
     private Date fecha;
-    private Paciente paciente;
+    private int idPaciente;
+    private int idMedico;
     private String establecimiento;
 
     /**
@@ -22,9 +23,10 @@ public class Cita {
      * @param paciente
      * @param establecimiento
      */
-    public Cita(Date fecha, Paciente paciente, String establecimiento) {
+    public Cita(Date fecha, int idPaciente, int idMedico, String establecimiento) {
         this.fecha = fecha;
-        this.paciente = paciente;
+        this.idPaciente = idPaciente;
+        this.idMedico = idMedico;
         this.establecimiento = establecimiento;
     }
 
@@ -45,15 +47,29 @@ public class Cita {
     /**
      * @return paciente que esta agendado en la cita
      */
-    public Paciente getPaciente() {
-        return paciente;
+    public int idPaciente() {
+        return idPaciente;
     }
 
     /**
      * @param paciente paciente que esta agendado en la cita
      */
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
+    /**
+     * @return médico que esta agendado en la cita
+     */
+    public int idMedico() {
+        return idMedico;
+    }
+
+    /**
+     * @param medico médico que esta agendado en la cita
+     */
+    public void setIdMedico(int idMedico) {
+        this.idMedico = idMedico;
     }
 
     /**
