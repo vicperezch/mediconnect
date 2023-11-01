@@ -2,7 +2,7 @@ package com.mediconnect.model;
 
 /**
  * @author Nils Muralles
- * @version 1.0.0
+ * @version 1.0.1
  * @creationDate 24/10/2023
  * @modificationDate 24/10/2023
  *                   Esta clase modela a un Paciente, que hereda de la clase
@@ -10,7 +10,6 @@ package com.mediconnect.model;
  */
 
 public class Paciente extends Usuario {
-
     private CartaMedica cartaMedica;
 
     /**

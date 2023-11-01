@@ -5,16 +5,16 @@ import java.util.Date;
 
 /**
  * @author Victor Pérez
- * @version 1.0.0
+ * @version 1.0.1
  * @creationDate 15/10/2023
- * @modificationDate 15/10/2023
+ * @modificationDate 31/10/2023
  * Esta clase modela una receta médica para los pacientes
  */
 public class Receta {
     private int numeroReceta;
     private Date fechaEmision;
     private Medico medico;
-    private ArrayList<Medicamento> medicametos;
+    private ArrayList<String> medicamentos;
     private String justificacionReceta;
     private String observaciones;
 
@@ -24,15 +24,15 @@ public class Receta {
      * @param numeroReceta El número de la receta
      * @param fechaEmision Fecha en la que se emitió la receta
      * @param medico Médico que realizó la receta
-     * @param medicametos Array con los medicamentos que contiene la receta
+     * @param medicamentos Array con los medicamentos que contiene la receta
      * @param justificacionReceta La explicación del médico
      * @param observaciones Observaciones que realiza el médico
      */
-    public Receta(int numeroReceta, Date fechaEmision, Medico medico, ArrayList<Medicamento> medicametos, String justificacionReceta, String observaciones) {
+    public Receta(int numeroReceta, Date fechaEmision, Medico medico, ArrayList<String> medicamentos, String justificacionReceta, String observaciones) {
         this.numeroReceta = numeroReceta;
         this.fechaEmision = fechaEmision;
         this.medico = medico;
-        this.medicametos = medicametos;
+        this.medicamentos = medicamentos;
         this.justificacionReceta = justificacionReceta;
         this.observaciones = observaciones;
     }
@@ -89,16 +89,16 @@ public class Receta {
      * Obtiene la lista de medicamentos que contiene la receta
      * @return Lista de medicamentos como un ArrayList
      */
-    public ArrayList<Medicamento> getMedicametos() {
-        return medicametos;
+    public ArrayList<String> getMedicamentos() {
+        return medicamentos;
     }
 
     /**
      * Actualiza la lista de medicamentos
-     * @param medicametos Nueva lista de medicamentos
+     * @param medicamentos Nueva lista de medicamentos
      */
-    public void setMedicametos(ArrayList<Medicamento> medicametos) {
-        this.medicametos = medicametos;
+    public void setMedicamentos(ArrayList<String> medicamentos) {
+        this.medicamentos = medicamentos;
     }
 
     /**
