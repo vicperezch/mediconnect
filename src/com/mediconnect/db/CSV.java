@@ -18,7 +18,7 @@ import java.util.Arrays;
  * @author Victor Pérez
  * @version 2.0.0
  * @creationDate 31/10/2023
- * @modificationDate 01/11/2023
+ * @modificationDate 02/11/2023
  * @description Clase encargada de la persistencia de datos a través de archivos csv
  */
 public class CSV {
@@ -111,6 +111,7 @@ public class CSV {
         // Escribe la carta
         escritor.write(carta.getId() + "," + String.join("-", carta.getEnfermedades()) + "," +
                 String.join("-", carta.getAlergias()) + "," + String.join("-", carta.getExamenes()));
+        escritor.newLine();
 
         escritor.close();
     }
@@ -148,6 +149,11 @@ public class CSV {
     public ArrayList<Usuario> leerUsuarios() throws IOException {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         BufferedReader lector = new BufferedReader(new FileReader(archivoUsuarios));
+
+        if (!archivoUsuarios.exists()) {
+            archivoUsuarios.createNewFile();
+        }
+
         String linea = lector.readLine();
 
         // Lee cada línea
@@ -204,8 +210,13 @@ public class CSV {
      * @return CartaMedica del paciente
      */
     public ArrayList<CartaMedica> leerCartaMedica() throws IOException {
-        BufferedReader lector = new BufferedReader(new FileReader(archivoCartasMedicas));
         ArrayList<CartaMedica> cartas = new ArrayList<>();
+
+        if (!archivoCartasMedicas.exists()) {
+            archivoCartasMedicas.createNewFile();
+        }
+
+        BufferedReader lector = new BufferedReader(new FileReader(archivoCartasMedicas));
         String linea = lector.readLine();
 
         while (linea != null) {

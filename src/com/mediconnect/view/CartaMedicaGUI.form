@@ -66,60 +66,6 @@
             </properties>
             <border type="none"/>
             <children>
-              <grid id="f2836" binding="pnlTratamientos" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-5584940"/>
-                </properties>
-                <border type="empty">
-                  <size top="20" left="20" bottom="20" right="20"/>
-                </border>
-                <children>
-                  <component id="8c625" class="javax.swing.JButton" binding="btnTratamientos">
-                    <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <preferred-size width="70" height="30"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <background color="-10312014"/>
-                      <borderPainted value="false"/>
-                      <contentAreaFilled value="true"/>
-                      <defaultCapable value="true"/>
-                      <focusPainted value="true"/>
-                      <font name="Microsoft Tai Le" size="16" style="1"/>
-                      <hideActionText value="false"/>
-                      <margin top="0" left="0" bottom="0" right="0"/>
-                      <requestFocusEnabled value="false"/>
-                      <text value="Agregar"/>
-                      <verifyInputWhenFocusTarget value="false"/>
-                    </properties>
-                  </component>
-                  <component id="3c094" class="javax.swing.JTextField" binding="txtTratamientos">
-                    <constraints>
-                      <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <font name="Microsoft Tai Le" size="16"/>
-                      <horizontalAlignment value="10"/>
-                    </properties>
-                  </component>
-                  <component id="1fd7f" class="javax.swing.JLabel" binding="lblTratamientos">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Microsoft Tai Le" size="18"/>
-                      <text value="Agrega tus tratamientos"/>
-                    </properties>
-                  </component>
-                </children>
-              </grid>
               <grid id="9a7" binding="pnlEnfermedades" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
@@ -290,6 +236,23 @@
                 <properties>
                   <icon value="img/user.png"/>
                   <text value=""/>
+                </properties>
+              </component>
+              <component id="a1b52" class="javax.swing.JButton" binding="btnFinalizar">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="150" height="35"/>
+                    <preferred-size width="150" height="35"/>
+                    <maximum-size width="150" height="35"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <actionCommand value="Finalizar"/>
+                  <background color="-5584940"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="Microsoft Tai Le" size="16" style="1"/>
+                  <text value="Finalizar"/>
                 </properties>
               </component>
             </children>

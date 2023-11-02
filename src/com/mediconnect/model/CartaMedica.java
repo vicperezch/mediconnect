@@ -2,9 +2,9 @@ package com.mediconnect.model;
 
 /**
     * @author Juan Solís
-    * @version 1.0.0
+    * @version 1.0.1
     * @creationDate 20/10/2023
-    * @modificationDate 20/10/2023
+    * @modificationDate 02/11/2023
     * Esta clase modela a una Carta Medica para poder ser utilizado en el programa
 */
 
@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class CartaMedica {
     private int id;
-    private ArrayList<String> enfermedades = new ArrayList<>();
-    private ArrayList<String> alergias = new ArrayList<>();
-    private ArrayList<String> examenes = new ArrayList<>();
+    private ArrayList<String> enfermedades;
+    private ArrayList<String> alergias;
+    private ArrayList<String> examenes;
     
     /**
      * Este método agrega a un nuevo jugador portero al sistema

@@ -2,9 +2,9 @@ package com.mediconnect.controller;
 
 /**
     * @author Juan Solís
-    * @version 1.0.0
-    * @creationDate 1/11/2023
-    * @modificationDate 1/11/2023
+    * @version 1.0.1
+    * @creationDate 01/11/2023
+    * @modificationDate 02/11/2023
     * Esta clase se encarga de llevar el control de la clase modelo de Usuario
 */
 
@@ -69,7 +69,7 @@ public class UsuarioController {
      * @param password La contraseña del usuario
      * @param rol      El rol del usuario (Medico/Paciente)
      */
-    public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol) {
+    public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol, int idCartaMedica) {
         if (!correoExistente(correo)) {
             password = codificaPassword(password);
 
@@ -79,7 +79,7 @@ public class UsuarioController {
             if ("Medico".equals(rol)) {
                 nuevoUsuario = new Medico(nombre, apellido, correo, password, id, rol);
             } else {
-                nuevoUsuario = new Paciente(nombre, apellido, correo, password, id, rol, 1);
+                nuevoUsuario = new Paciente(nombre, apellido, correo, password, id, rol, idCartaMedica);
             }
 
             try {

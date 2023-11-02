@@ -8,9 +8,9 @@ import com.mediconnect.controller.UsuarioController;
 
 /**
  * @author Juan Solís
- * @version 1.5
+ * @version 1.5.1
  * @creationDate 26 de octubre de 2023
- * @lastModified 1 de noviembre de 2023
+ * @lastModified 02 de noviembre de 2023
  * @description Clase encargada de manejar la vista de registro de los usuarios
  */
 
@@ -54,15 +54,6 @@ public class RegisterGUI {
         btnRegistrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginGUI myLogin = new LoginGUI();
-                myLogin.setVisible();
-                myFrame.dispose();
-            }
-        });
-
-        btnRegistrarse.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
                 String nombre = nombreField.getText();
                 String apellido = apellidoField.getText();
                 String correo = emailField.getText();
@@ -71,18 +62,24 @@ public class RegisterGUI {
 
                 if(nombre.isEmpty() || apellido.isEmpty() || correo.isEmpty() || password.isEmpty()){
                     JOptionPane.showMessageDialog(myFrame, "Debe ingresar todos los datos solicitados", "Advertencia", JOptionPane.WARNING_MESSAGE);
-
                 } else {
-                    boolean registroExitoso = usuarioController.registrarUsuario(nombre, apellido, correo, password, rol);
-
-                    if (registroExitoso) {
-                        JOptionPane.showMessageDialog(myFrame, "El usuario fue registrado exitosamente", "Éxito",JOptionPane.INFORMATION_MESSAGE);
-
+                    if (rol.equals("Paciente")) {
+                        CartaMedicaGUI myCartaMedica = new CartaMedicaGUI(nombre, apellido, correo, password, rol);
+                        myCartaMedica.setVisible(nombre, apellido, correo, password, rol);
+                        myFrame.dispose();
                     } else {
-                        JOptionPane.showMessageDialog(myFrame, "El correo ya se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                        boolean registroExitoso = usuarioController.registrarUsuario(nombre, apellido, correo, password, rol, 0);
+
+                        if (registroExitoso) {
+                            JOptionPane.showMessageDialog(myFrame, "El médico fue registrado exitosamente", "Éxito",JOptionPane.INFORMATION_MESSAGE);
+                            LoginGUI myLogin = new LoginGUI();
+                            myLogin.setVisible();
+                            myFrame.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(myFrame, "El correo ya se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
                 }
-
             }
         });
     }

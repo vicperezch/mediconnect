@@ -2,52 +2,61 @@ package com.mediconnect.controller;
 
 /**
     * @author Juan Solís
-    * @version 1.0.0
+    * @version 1.0.1
     * @creationDate 24/10/2023
-    * @modificationDate 24/10/2023
+    * @modificationDate 02/10/2023
     * Esta clase se encarga de llevar el control de la clase modelo de CartaMedica
 */
 
 import com.mediconnect.model.CartaMedica;
 import com.mediconnect.model.Medico;
+import com.mediconnect.db.CSV;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class CartaMedicaController {
+    private UsuarioController usuarioControlador = new UsuarioController();
+    private CSV csv = new CSV();
     private CartaMedica cartaMedica;
-    
+    private ArrayList<CartaMedica> listaCartasMedicas = new ArrayList<CartaMedica>();
+
     /**
      * Constructor de la clase CartaMedicaController.
      *
-     * @param cartaMedica La instancia de CartaMedica que se va a gestionar con este controlador.
      */
-    public CartaMedicaController(CartaMedica cartaMedica) {
-        this.cartaMedica = cartaMedica;
+    public CartaMedicaController(){
+        try {
+            listaCartasMedicas = csv.leerCartaMedica();
+
+        } catch (IOException e) {
+            System.out.println("Error al leer carta médica");
+            System.out.println(e);
+        }
+        this.cartaMedica = new CartaMedica(listaCartasMedicas.size()+5000, new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
     }
+
+    ArrayList<String> enfermedades = new ArrayList<String>();
+    ArrayList<String> alergias = new ArrayList<String>();
+    ArrayList<String> diagnosticos = new ArrayList<String>();
 
     /**
      * Método que agrega una nueva enfermedad a la carta médica
      * 
      * @param nombreEnfermedad El nombre de la nueva enfermedad que será agregada
     */
-    public void agregarEnfermedad(String nombreEnfermedad){
-        ArrayList<String> enfermedades = cartaMedica.getEnfermedades();
-        boolean enfermedadEncontrada = false;
-
+    public boolean agregarEnfermedad(String nombreEnfermedad){
         for (String enfermedad : enfermedades) {
             if (enfermedad.equals(nombreEnfermedad)) {
-                enfermedadEncontrada = true;
-                break;
+                return false;
             }
         }
 
-        if (!enfermedadEncontrada) {
-            enfermedades.add(nombreEnfermedad);
-            cartaMedica.setEnfermedades(enfermedades);
-        } else {
-            // Mensaje: La enfermedad ingresada ya está registrada para el paciente actual
-        }
+        enfermedades.add(nombreEnfermedad);
+        cartaMedica.setEnfermedades(enfermedades);
+        System.out.println(enfermedades);
+        return true;
     }
 
     /**
@@ -55,46 +64,56 @@ public class CartaMedicaController {
      * 
      * @param nombreAlergia El nombre de la nueva alergia que será agregada
     */
-    public void agregarElergia(String nombreAlergia){
-        ArrayList<String> alergias = cartaMedica.getEnfermedades();
-        boolean alergiaEncontrada = false;
-
+    public boolean agregarAlergia(String nombreAlergia){
         for (String alergia : alergias) {
             if (alergia.equals(nombreAlergia)) {
-                alergiaEncontrada = true;
-                break;
+                return false;
             }
         }
 
-        if (!alergiaEncontrada) {
-            alergias.add(nombreAlergia);
-            cartaMedica.setAlergias(alergias);
-        } else {
-            // Mensaje: La alergia ingresada ya está registrada para el paciente actual
-        }
+        alergias.add(nombreAlergia);
+        cartaMedica.setAlergias(alergias);
+        System.out.println(alergias);
+        return true;
     }
 
     /**
      * Método que agrega una nuevo diagnóstico a la carta médica
      * 
-     * @param diagnostico El nuevo objeto Diagnostico que será agregado
+     * @param diagnostico El nuevo diagnóstico que será agregado
     */
-    public void agregarExamen(String diagnostico){
-        ArrayList<String> diagnosticos = cartaMedica.getExamenes();
-        diagnosticos.add(diagnostico);
+    public boolean agregarExamen(String nombreDiagnostico){
+        for (String diagnostico : diagnosticos) {
+            if (diagnostico.equals(nombreDiagnostico)) {
+                return false;
+            }
+        }
+
+        diagnosticos.add(nombreDiagnostico);
         cartaMedica.setExamenes(diagnosticos);
+        System.out.println(diagnosticos);
+        return true;
     }
 
     /**
-     * Método que agrega un nuevo tratamiento a la carta médica
+     * Método que registra la carta médica de un paciente en el programa
      * 
-     * @param receta El nuevo objeto Receta que será agregado
+     * @param nombre El nombre del paciente
+     * @param apellido El apellido del paciente
+     * @param correo El correo del paciente
+     * @param password La contraseña del paciente
+     * @param rol El rol de usuario (Paciente)
     */
-    // public void agregarTratamiento(Receta receta) {
-    //     ArrayList<Receta> tratamientos = cartaMedica.getTratamientos();
-    //     tratamientos.add(receta);
-    //     cartaMedica.setTratamientos(tratamientos);
-    // }
+    public boolean guardarCartaMedica(String nombre, String apellido, String correo, String password, String rol){
+        try {
+            usuarioControlador.registrarUsuario(nombre, apellido, correo, password, rol, cartaMedica.getId());
+            csv.guardarCartaMedica(cartaMedica);
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Método que edita a una enfermeda de la carta médica
@@ -154,32 +173,6 @@ public class CartaMedicaController {
     public void editarExamen(Date fecha, Medico medico, String nuevoDiagnostico){
         
     }
-
-    /**
-     * Método que edita a un tratamiento de la carta médica
-     * 
-     * @param numeroReceta El número de la receta a editar
-     * @param nuevaReceta El nuevo objeto Receta
-    */
-    // public void editarTratamiento(int numeroReceta, Receta nuevaReceta){
-    //     ArrayList<Receta> recetas = cartaMedica.getTratamientos();
-    //     boolean encontrada = false;
-
-    //     for (Receta receta : recetas) {
-    //         if (receta.getNumeroReceta() == numeroReceta) {
-    //             int indice = recetas.indexOf(receta);
-    //             recetas.set(indice, nuevaReceta);
-    //             encontrada = true;
-    //             break;
-    //         }
-    //     }
-
-    //     if (encontrada) {
-    //         cartaMedica.setTratamientos(recetas);
-    //     } else {
-    //         // Mensaje: No se encontró el tratamiento a editar
-    //     }
-    // }
 
     /**
      * Método que elimina una enfermedad de la carta médica
@@ -247,27 +240,4 @@ public class CartaMedicaController {
             // Mensaje: No se encontró el exámen a eliminar
         }
     }
-
-    /**
-     * Método que elimina un tratamiento de la carta médica
-     * 
-     * @param numeroReceta El número de la receta que será eliminada
-    */
-    // public void eliminarTratamiento(int numeroReceta){
-    //     ArrayList<Receta> recetas = cartaMedica.getTratamientos();
-    //     boolean encontrada = false;
-
-    //     for (Receta receta : new ArrayList<>(recetas)) {
-    //         if (receta.getNumeroReceta() == numeroReceta) {
-    //             recetas.remove(receta);
-    //             encontrada = true;
-    //         }
-    //     }
-
-    //     if (encontrada) {
-    //         cartaMedica.setTratamientos(recetas);
-    //     } else {
-    //         // Mensaje: No se encontró el tratamiento a eliminar
-    //     }
-    // }
 }
