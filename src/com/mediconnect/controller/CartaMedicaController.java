@@ -10,7 +10,6 @@ package com.mediconnect.controller;
 
 import com.mediconnect.model.CartaMedica;
 import com.mediconnect.model.Medico;
-import com.mediconnect.model.Receta;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -91,11 +90,11 @@ public class CartaMedicaController {
      * 
      * @param receta El nuevo objeto Receta que será agregado
     */
-    public void agregarTratamiento(Receta receta) {
-        ArrayList<Receta> tratamientos = cartaMedica.getTratamientos();
-        tratamientos.add(receta);
-        cartaMedica.setTratamientos(tratamientos);
-    }
+    // public void agregarTratamiento(Receta receta) {
+    //     ArrayList<Receta> tratamientos = cartaMedica.getTratamientos();
+    //     tratamientos.add(receta);
+    //     cartaMedica.setTratamientos(tratamientos);
+    // }
 
     /**
      * Método que edita a una enfermeda de la carta médica
@@ -162,25 +161,25 @@ public class CartaMedicaController {
      * @param numeroReceta El número de la receta a editar
      * @param nuevaReceta El nuevo objeto Receta
     */
-    public void editarTratamiento(int numeroReceta, Receta nuevaReceta){
-        ArrayList<Receta> recetas = cartaMedica.getTratamientos();
-        boolean encontrada = false;
+    // public void editarTratamiento(int numeroReceta, Receta nuevaReceta){
+    //     ArrayList<Receta> recetas = cartaMedica.getTratamientos();
+    //     boolean encontrada = false;
 
-        for (Receta receta : recetas) {
-            if (receta.getNumeroReceta() == numeroReceta) {
-                int indice = recetas.indexOf(receta);
-                recetas.set(indice, nuevaReceta);
-                encontrada = true;
-                break;
-            }
-        }
+    //     for (Receta receta : recetas) {
+    //         if (receta.getNumeroReceta() == numeroReceta) {
+    //             int indice = recetas.indexOf(receta);
+    //             recetas.set(indice, nuevaReceta);
+    //             encontrada = true;
+    //             break;
+    //         }
+    //     }
 
-        if (encontrada) {
-            cartaMedica.setTratamientos(recetas);
-        } else {
-            // Mensaje: No se encontró el tratamiento a editar
-        }
-    }
+    //     if (encontrada) {
+    //         cartaMedica.setTratamientos(recetas);
+    //     } else {
+    //         // Mensaje: No se encontró el tratamiento a editar
+    //     }
+    // }
 
     /**
      * Método que elimina una enfermedad de la carta médica
@@ -254,21 +253,21 @@ public class CartaMedicaController {
      * 
      * @param numeroReceta El número de la receta que será eliminada
     */
-    public void eliminarTratamiento(int numeroReceta){
-        ArrayList<Receta> recetas = cartaMedica.getTratamientos();
-        boolean encontrada = false;
+    // public void eliminarTratamiento(int numeroReceta){
+    //     ArrayList<Receta> recetas = cartaMedica.getTratamientos();
+    //     boolean encontrada = false;
 
-        for (Receta receta : new ArrayList<>(recetas)) {
-            if (receta.getNumeroReceta() == numeroReceta) {
-                recetas.remove(receta);
-                encontrada = true;
-            }
-        }
+    //     for (Receta receta : new ArrayList<>(recetas)) {
+    //         if (receta.getNumeroReceta() == numeroReceta) {
+    //             recetas.remove(receta);
+    //             encontrada = true;
+    //         }
+    //     }
 
-        if (encontrada) {
-            cartaMedica.setTratamientos(recetas);
-        } else {
-            // Mensaje: No se encontró el tratamiento a eliminar
-        }
-    }
+    //     if (encontrada) {
+    //         cartaMedica.setTratamientos(recetas);
+    //     } else {
+    //         // Mensaje: No se encontró el tratamiento a eliminar
+    //     }
+    // }
 }

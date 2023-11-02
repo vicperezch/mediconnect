@@ -1,7 +1,5 @@
 package com.mediconnect.model;
 
-import java.util.ArrayList;
-
 /**
  * @author Nils Muralles
  * @version 1.0.0

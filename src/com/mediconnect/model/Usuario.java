@@ -161,7 +161,7 @@ public class Usuario {
      * @return Una cadena de texto que muestra la información del Usuario
     */
     public String toString() {
-        String estado = "Nombre: " + this.nombre;
+        String estado = "Nombre: " + this.nombre + " | Apellido: " + this.apellido + " | Correo: " + this.correo + " | Password: " + this.password + " | Id: " + this.id + " | Rol: " + this.rol;
         return estado;
     }
 }

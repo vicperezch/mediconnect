@@ -1,8 +1,6 @@
 package com.mediconnect.controller;
 
 import com.mediconnect.model.Medico;
-import com.mediconnect.model.Paciente;
-import java.util.ArrayList;
 
 /**
  * @author Victor Pérez

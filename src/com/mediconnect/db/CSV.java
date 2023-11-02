@@ -43,9 +43,9 @@ public class CSV {
 
     /**
      * @description Almacena los usuarios contenidos en un ArrayList en un archivo CSV
-     * @param listaUsuarios ArrayList de usuarios a almacenar
+     * @param nuevoUsuario EL nuevo objeto Usuario a guardar
      */
-    public void guardarUsuarios(ArrayList<Usuario> listaUsuarios) throws IOException {
+    public void guardarUsuarios(Usuario nuevoUsuario) throws IOException {
         BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoUsuarios, true));
 
         if (!archivoUsuarios.exists()) {
@@ -54,21 +54,17 @@ public class CSV {
             escritor.newLine();
         }
 
-        // Recorre el array de usuarios
-        for (Usuario usuario: listaUsuarios) {
+        // Escribe de acuerdo al rol de cada uno
+        if (nuevoUsuario instanceof Medico) {
+            escritor.write(nuevoUsuario.getId() + "," + nuevoUsuario.getRol() + "," + nuevoUsuario.getCorreo() + "," +
+                    nuevoUsuario.getNombre() + "," + nuevoUsuario.getApellido() + "," + nuevoUsuario.getPassword() + ",N/A");
+            escritor.newLine();
 
-            // Escribe de acuerdo al rol de cada uno
-            if (usuario instanceof Medico) {
-                escritor.write(usuario.getId() + "," + usuario.getRol() + "," + usuario.getCorreo() + "," +
-                        usuario.getNombre() + "," + usuario.getApellido() + "," + usuario.getPassword() + ",N/A");
-                escritor.newLine();
-
-            } else if (usuario instanceof Paciente) {
-                escritor.write(usuario.getId() + "," + usuario.getRol() + "," + usuario.getCorreo() + "," +
-                        usuario.getNombre() + "," + usuario.getApellido() + "," + usuario.getPassword() + "," +
-                        ((Paciente) usuario).getIdCartaMedica());
-                escritor.newLine();
-            }
+        } else {
+            escritor.write(nuevoUsuario.getId() + "," + nuevoUsuario.getRol() + "," + nuevoUsuario.getCorreo() + "," +
+                    nuevoUsuario.getNombre() + "," + nuevoUsuario.getApellido() + "," + nuevoUsuario.getPassword() + "," +
+                    ((Paciente) nuevoUsuario).getIdCartaMedica());
+            escritor.newLine();
         }
 
         escritor.close();
@@ -159,7 +155,7 @@ public class CSV {
             String[] datos = linea.split(",");
 
             // Lee de acuerdo al rol de cada uno
-            if (datos[1].equals("Médico")) {
+            if (datos[1].equals("Medico")) {
                 Medico medico = new Medico(datos[3], datos[4], datos[2], datos[5], Integer.parseInt(datos[0]), datos[1]);
 
                 // Añade al médico al ArrayList
