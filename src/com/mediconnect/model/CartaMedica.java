@@ -12,10 +12,10 @@ package com.mediconnect.model;
 import java.util.ArrayList;
 
 public class CartaMedica {
+    private int id;
     private ArrayList<String> enfermedades = new ArrayList<>();
     private ArrayList<String> alergias = new ArrayList<>();
     private ArrayList<String> examenes = new ArrayList<>();
-    private ArrayList<Receta> tratamientos = new ArrayList<>();
     
     /**
      * Este método agrega a un nuevo jugador portero al sistema
@@ -23,15 +23,25 @@ public class CartaMedica {
      * @param enfermedades Las enfermedadaes del usuario
      * @param alergias Las alergias del usuario
      * @param examenes Los examenes del usuario
-     * @param tratamientos Los tratamientos del usuario
     */
-    public CartaMedica(ArrayList<String> enfermedades, ArrayList<String> alergias, ArrayList<String> examenes,
-            ArrayList<Receta> tratamientos) {
+    public CartaMedica(int id, ArrayList<String> enfermedades, ArrayList<String> alergias, ArrayList<String> examenes) {
+        this.id = id;
         this.enfermedades = enfermedades;
         this.alergias = alergias;
         this.examenes = examenes;
-        this.tratamientos = tratamientos;
     }
+
+    /**
+     * Actualiza el id de la carta
+     * @param id Nuevo ID
+     */
+    public void setId(int id) {this.id = id;}
+
+    /**
+     * Obtiene el id de la carta
+     * @return int con el id
+     */
+    public int getId() {return this.id;}
 
     /**
      * Obtiene las enfermedades del usuario
@@ -79,22 +89,6 @@ public class CartaMedica {
     */
     public void setExamenes(ArrayList<String> examenes) {
         this.examenes = examenes;
-    }
-
-    /**
-     * Obtiene los tratamientos (recetas) que ha recibido el usuario
-     * @return Los tratamientos (recetas) que ha recidibo el usuario
-    */
-    public ArrayList<Receta> getTratamientos() {
-        return tratamientos;
-    }
-
-    /**
-     * Actualiza los tratamientos (recetas) que ha recibido el usuario
-     * @param tratamientos los tratamientos (recetas) que ha recibido el usuario
-    */
-    public void setTratamientos(ArrayList<Receta> tratamientos) {
-        this.tratamientos = tratamientos;
     }
 
     /**

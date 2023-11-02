@@ -4,9 +4,9 @@ import java.util.Date;
 
 /**
 @author Diego Flores
-@version 1.1.0
+@version 2.0.0
 @creationDate 19/10/2023
-@lastModified 31/10/2023
+@lastModified 01/11/2023
 @description Clase que se encargara de modelar las citas
 */
 public class Cita {
@@ -20,7 +20,8 @@ public class Cita {
     /**
      * Constructor de la clase encargado de incializar todos los atributos de una cita
      * @param fecha
-     * @param paciente
+     * @param idPaciente
+     * @param idMedico
      * @param establecimiento
      */
     public Cita(Date fecha, int idPaciente, int idMedico, String establecimiento) {
@@ -47,12 +48,12 @@ public class Cita {
     /**
      * @return paciente que esta agendado en la cita
      */
-    public int idPaciente() {
+    public int getIdPaciente() {
         return idPaciente;
     }
 
     /**
-     * @param paciente paciente que esta agendado en la cita
+     * @param idPaciente ID del paciente que esta agendado en la cita
      */
     public void setIdPaciente(int idPaciente) {
         this.idPaciente = idPaciente;
@@ -61,12 +62,12 @@ public class Cita {
     /**
      * @return médico que esta agendado en la cita
      */
-    public int idMedico() {
+    public int getIdMedico() {
         return idMedico;
     }
 
     /**
-     * @param medico médico que esta agendado en la cita
+     * @param idMedico ID del médico que esta agendado en la cita
      */
     public void setIdMedico(int idMedico) {
         this.idMedico = idMedico;
