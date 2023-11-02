@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.mediconnect.view.RecetaMedica">
+  <grid id="27dc6" binding="pnlRecetaMedica" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="1024" height="728"/>
+    </constraints>
+    <properties>
+      <minimumSize width="1024" height="728"/>
+      <preferredSize width="1024" height="728"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="ca5d4" binding="pnlHeader" layout-manager="BorderLayout" hgap="0" vgap="10">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-5584940"/>
+          <preferredSize width="277" height="121"/>
+        </properties>
+        <border type="empty">
+          <size top="10" left="0" bottom="0" right="0"/>
+        </border>
+        <children>
+          <component id="b1550" class="javax.swing.JLabel" binding="lblTitle">
+            <constraints border-constraint="North"/>
+            <properties>
+              <font name="Bahnschrift" size="48" style="1"/>
+              <foreground color="-16777216"/>
+              <horizontalAlignment value="0"/>
+              <text value="MediConnect"/>
+            </properties>
+          </component>
+          <grid id="8979" layout-manager="BorderLayout" hgap="0" vgap="5">
+            <constraints border-constraint="South"/>
+            <properties>
+              <background color="-10312014"/>
+              <preferredSize width="10" height="43"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="5434f" class="javax.swing.JLabel" binding="lblSubtitle">
+                <constraints border-constraint="South"/>
+                <properties>
+                  <font name="Bahnschrift" size="28" style="0"/>
+                  <foreground color="-16777216"/>
+                  <horizontalAlignment value="0"/>
+                  <text value="Receta Médica"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="c008c" binding="pnlBody" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="empty">
+          <size top="50" left="80" bottom="50" right="80"/>
+        </border>
+        <children>
+          <grid id="ddff2" binding="pnlForm" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="10">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints border-constraint="Center"/>
+            <properties>
+              <background color="-10312014"/>
+            </properties>
+            <border type="empty">
+              <size top="10" left="10" bottom="10" right="10"/>
+            </border>
+            <children>
+              <grid id="b6f0f" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="25">
+                <margin top="20" left="10" bottom="15" right="10"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-5584940"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f0de6" class="javax.swing.JLabel" binding="lblAgregarRecetas">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <focusable value="false"/>
+                      <font name="Microsoft Tai Le" size="20" style="1"/>
+                      <text value="Agregar recetas médicas"/>
+                    </properties>
+                  </component>
+                  <grid id="7a577" layout-manager="BorderLayout" hgap="5" vgap="10">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="b2e64" class="javax.swing.JLabel">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="18" style="0"/>
+                          <text value="Paciente"/>
+                        </properties>
+                      </component>
+                      <component id="351d2" class="javax.swing.JComboBox" binding="cmbPaciente">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="16" style="0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="3fe78" layout-manager="BorderLayout" hgap="5" vgap="10">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="ab326" class="javax.swing.JLabel">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="18" style="0"/>
+                          <text value="Medicamentos                "/>
+                        </properties>
+                      </component>
+                      <component id="346fe" class="javax.swing.JTextField" binding="txtMedicamentos">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="16" style="0"/>
+                        </properties>
+                      </component>
+                      <component id="79661" class="javax.swing.JButton" binding="btnMedicamentos">
+                        <constraints border-constraint="East"/>
+                        <properties>
+                          <background color="-10312014"/>
+                          <borderPainted value="false"/>
+                          <focusPainted value="false"/>
+                          <font name="Microsoft Tai Le" size="14" style="1"/>
+                          <text value="Agregar"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="a7253" layout-manager="BorderLayout" hgap="5" vgap="10">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="50d80" class="javax.swing.JLabel">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="18" style="0"/>
+                          <text value="Justificación"/>
+                        </properties>
+                      </component>
+                      <component id="b02b3" class="javax.swing.JTextField" binding="txtJustificacion">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="16" style="0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="12c62" layout-manager="BorderLayout" hgap="5" vgap="10">
+                    <constraints>
+                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="38b1c" class="javax.swing.JLabel">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="18" style="0"/>
+                          <text value="Observaciones"/>
+                        </properties>
+                      </component>
+                      <component id="1e4f2" class="javax.swing.JTextField" binding="txtObservaciones">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <font name="Microsoft Tai Le" size="16" style="0"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="fa91a" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-5584940"/>
+                </properties>
+                <border type="empty">
+                  <size top="10" left="10" bottom="10" right="10"/>
+                </border>
+                <children>
+                  <component id="8f65e" class="javax.swing.JLabel">
+                    <constraints border-constraint="North"/>
+                    <properties>
+                      <font name="Microsoft Tai Le" size="20" style="1"/>
+                      <foreground color="-16777216"/>
+                      <text value="Aqui se muestran las recetas"/>
+                    </properties>
+                  </component>
+                  <component id="6bc87" class="javax.swing.JTable" binding="tblRecetas">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <background color="-5584940"/>
+                      <editingColumn value="1"/>
+                      <editingRow value="1"/>
+                      <foreground color="-16777216"/>
+                      <rowHeight value="40"/>
+                      <rowMargin value="5"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
