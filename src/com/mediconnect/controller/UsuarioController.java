@@ -24,8 +24,8 @@ public class UsuarioController {
      * Método que verifica que el correo ingresado por el usuario aún no exista
      * 
      * @param correo El nuevo correo ingresado por el usuario
-    */
-    private boolean correoExistente(String correo) {
+     */
+    public boolean correoExistente(String correo) {
         try {
             listaUsuarios = csv.leerUsuarios();
 
@@ -45,21 +45,31 @@ public class UsuarioController {
      * Método codifica la contraseña ingresada por el usuario
      * 
      * @param password La contraseña ingresada por el usuario
-    */
+     */
     public String codificaPassword(String password) {
         return Base64.getEncoder().encodeToString(password.getBytes());
     }
-    
+
+    /**
+     * Método que decodifica la contraseña ingresada por el usuario
+     * 
+     * @param password La contraseña ingresada por el usuario
+     */
+    public String decodificarPassword(String password) {
+        byte[] decodedPassword = Base64.getDecoder().decode(password);
+        return new String(decodedPassword);
+    }
+
     /**
      * Método registra un nuevo usuario en el programa
      * 
-     * @param nombre El nombre del usuario
+     * @param nombre   El nombre del usuario
      * @param apellido El apellido del usuario
-     * @param correo El correo del usuario
+     * @param correo   El correo del usuario
      * @param password La contraseña del usuario
-     * @param rol El rol del usuario (Medico/Paciente)
-    */
-    public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol){
+     * @param rol      El rol del usuario (Medico/Paciente)
+     */
+    public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol) {
         if (!correoExistente(correo)) {
             password = codificaPassword(password);
 
@@ -81,6 +91,50 @@ public class UsuarioController {
         } else {
             return false;
         }
-        
+
+    }
+
+    /**
+     * Método que ingresa a un usuario ya creado
+     * 
+     * @param correo   Correo del usuario
+     * @param password Contraseña del usuario
+     */
+    public boolean login(String correo, char[] password) {
+
+        try {
+            listaUsuarios = csv.leerUsuarios();
+
+        } catch (Exception e) {
+            System.out.println("Error al leer los datos");
+        }
+
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getCorreo().equals(correo)
+                    && decodificarPassword(usuario.getPassword()).equals(new String(password))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Usuario usuarioEnLogin(String correo) {
+        Usuario usuarioEnLogin = null;
+
+        try {
+            listaUsuarios = csv.leerUsuarios();
+
+        } catch (Exception e) {
+            System.out.println("Error al leer los datos");
+        }
+
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getCorreo().equals(correo)) {
+                usuarioEnLogin = usuario;
+                return usuario;
+            }
+        }
+
+        return usuarioEnLogin;
     }
 }
