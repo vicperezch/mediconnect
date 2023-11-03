@@ -14,9 +14,9 @@ import java.util.Date;
 
 /**
  * @author Victor Pérez
- * @version 1.0.0
+ * @version 1.0.1
  * @creationDate 02/11/2023
- * @modificationDate 02/11/2023
+ * @modificationDate 03/11/2023
  * @description Clase encargada de gestionar una instancia de Cita
  */
 public class CitaController {
@@ -97,6 +97,30 @@ public class CitaController {
 
             for (Cita cita: citas) {
                 if (cita.getIdMedico() == idMedico) {
+                    infoCitas.add(cita.toString());
+                }
+            }
+
+        } catch (IOException | ParseException e) {
+            System.out.println("Error al leer las citas");
+
+        }
+
+        return infoCitas;
+    }
+
+    /*
+     * 
+     */
+    public ArrayList<String> obtenerCitasPaciente(int idPaciente) {
+        ArrayList<Cita> citas;
+        ArrayList<String> infoCitas = new ArrayList<>();
+
+        try {
+            citas = csv.leerCitas();
+
+            for (Cita cita: citas) {
+                if (cita.getIdPaciente() == idPaciente) {
                     infoCitas.add(cita.toString());
                 }
             }

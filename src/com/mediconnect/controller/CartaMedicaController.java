@@ -2,9 +2,9 @@ package com.mediconnect.controller;
 
 /**
     * @author Juan Solís
-    * @version 1.0.1
+    * @version 1.1.0
     * @creationDate 24/10/2023
-    * @modificationDate 02/10/2023
+    * @modificationDate 03/10/2023
     * Esta clase se encarga de llevar el control de la clase modelo de CartaMedica
 */
 
@@ -236,5 +236,77 @@ public class CartaMedicaController {
         } else {
             // Mensaje: No se encontró el exámen a eliminar
         }
+    }
+
+    /*
+     * 
+     */
+    public ArrayList<String> obtenerEnfermedades(int idCarta) {
+        ArrayList<CartaMedica> cartasMedicas;
+        ArrayList<String> enfermedades = new ArrayList<>();
+
+        try {
+            cartasMedicas = csv.leerCartaMedica();
+
+            for (CartaMedica carta: cartasMedicas) {
+                if (carta.getId() == idCarta) {
+                    enfermedades.addAll(carta.getEnfermedades());
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer la carta médica");
+
+        }
+
+        return enfermedades;
+    }
+
+    /*
+     * 
+     */
+    public ArrayList<String> obtenerAlergias(int idCarta) {
+        ArrayList<CartaMedica> cartasMedicas;
+        ArrayList<String> alergias = new ArrayList<>();
+
+        try {
+            cartasMedicas = csv.leerCartaMedica();
+
+            for (CartaMedica carta: cartasMedicas) {
+                if (carta.getId() == idCarta) {
+                    alergias.addAll(carta.getAlergias());
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer la carta médica");
+
+        }
+
+        return alergias;
+    }
+
+    /*
+     * 
+     */
+    public ArrayList<String> obtenerExamenes(int idCarta) {
+        ArrayList<CartaMedica> cartasMedicas;
+        ArrayList<String> examenes = new ArrayList<>();
+
+        try {
+            cartasMedicas = csv.leerCartaMedica();
+
+            for (CartaMedica carta: cartasMedicas) {
+                if (carta.getId() == idCarta) {
+                    examenes.addAll(carta.getExamenes());
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error al leer la carta médica");
+
+        }
+
+        return examenes;
     }
 }

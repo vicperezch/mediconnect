@@ -7,15 +7,13 @@ import java.util.Random;
 import java.util.Date;
 
 import com.mediconnect.db.CSV;
-import com.mediconnect.model.Cita;
 import com.mediconnect.model.Paciente;
 import com.mediconnect.model.Receta;
 import com.mediconnect.model.Usuario;
-import com.mediconnect.view.RecetaMedica;
 
 /**
  * @author Nils Muralles
- * @version 1.0.0
+ * @version 1.0.1
  * @creationDate 02/11/2023
  * @modificationDate 02/11/2023
  * @description Clase encargada de gestionar una instancia de RecetaMedica
@@ -55,18 +53,30 @@ public class RecetaMedicaController {
         return pacientes;
     }
 
-    public boolean agregarReceta(Usuario usuario, String paciente, String medicamentos, String justificacion,
+    public boolean agregarReceta(Usuario medico, String paciente, String medicamentos, String justificacion,
             String observaciones) {
+        String nombrePaciente = paciente.split(" ")[0];
+        String nombreApellido = paciente.split(" ")[1];
+        int id_paciente = 0;
         ArrayList<Receta> recetas = new ArrayList<Receta>();
         ArrayList<String> listaMedicamentos = new ArrayList<String>();
         listaMedicamentos.add(medicamentos);
 
-        Receta nuevaReceta = new Receta(new Random().nextInt(9000) + 1000, new Date(), usuario.getId(), 0,
-                listaMedicamentos, justificacion, observaciones);
-
-        recetas.add(nuevaReceta);
-
         try {
+
+            ArrayList<Usuario> usuarios = csv.leerUsuarios();
+
+            for (Usuario usuario: usuarios) {
+                if (usuario.getNombre().equals(nombrePaciente) && usuario.getApellido().equals(nombreApellido)) {
+                    id_paciente = usuario.getId();
+                }
+            }
+
+            Receta nuevaReceta = new Receta(new Random().nextInt(9000) + 1000, new Date(), medico.getId(), id_paciente,
+            listaMedicamentos, justificacion, observaciones);
+
+            recetas.add(nuevaReceta);
+            
             csv.guardarRecetas(recetas);
             return true;
 
@@ -106,4 +116,32 @@ public class RecetaMedicaController {
         return infoRecetas;
     }
 
+    /*
+     * 
+     */
+    public ArrayList<ArrayList<String>> obtenerRecetasPaciente(int idPaciente) {
+        ArrayList<Receta> recetas;
+        ArrayList<ArrayList<String>> infoRecetas = new ArrayList<>();
+    
+        try {
+            recetas = csv.leerRecetas();
+    
+            for (Receta receta : recetas) {
+                if (receta.getIdPaciente() == idPaciente) {
+
+                    ArrayList<String> recetaInfo = new ArrayList<>();
+                    recetaInfo.add(receta.getMedicamentos().get(0));
+                    recetaInfo.add(receta.getJustificacionReceta());
+                    recetaInfo.add(receta.getObservaciones());
+                    
+                    infoRecetas.add(recetaInfo);
+                }
+            }
+
+        } catch (IOException | ParseException e) {
+            System.out.println("Error al leer las recetas");
+        }
+    
+        return infoRecetas;
+    }
 }

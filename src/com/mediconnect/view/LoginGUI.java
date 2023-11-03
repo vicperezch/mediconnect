@@ -2,6 +2,8 @@ package com.mediconnect.view;
 
 import com.mediconnect.controller.UsuarioController;
 import com.mediconnect.model.Medico;
+import com.mediconnect.model.Paciente;
+import com.mediconnect.model.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +12,9 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Diego Flores
- * @version 1.0.1
+ * @version 1.0.2
  * @creationDate 26 de octubre de 2023
- * @lastModified 02/11/2023
+ * @lastModified 02 de noviemebre de 2023
  * @description Clase encargada de manejar la vista de login
  */
 public class LoginGUI {
@@ -69,9 +71,15 @@ public class LoginGUI {
                             myFrame.dispose();
 
                         } else {
-                            PacienteGUI pacienteGUI = new PacienteGUI();
-                            pacienteGUI.setVisible();
-                            myFrame.dispose();
+                            Usuario usuario = usuarioController.usuarioEnLogin(textField1.getText());
+                            if (usuario != null) {
+                                if (usuario instanceof Paciente) {
+                                    Paciente paciente = (Paciente) usuario;
+                                    PacienteGUI pacienteGUI = new PacienteGUI(paciente);
+                                    pacienteGUI.setVisible(paciente);
+                                    myFrame.dispose();
+                                }
+                            }
                         }
 
                     } else {

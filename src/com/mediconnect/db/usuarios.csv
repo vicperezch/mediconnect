@@ -1,3 +1,1 @@
 id,rol,correo,nombre,apellido,password,id_carta
-1,Medico,admin@gmail.com,admin,admin,MTIzNDU=,N/A
-2,Paciente,a@gmail.com,aaa,bbb,MTIzNDU=,5000

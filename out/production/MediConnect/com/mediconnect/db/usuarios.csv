@@ -1,2 +1,5 @@
 id,rol,correo,nombre,apellido,password,id_carta
-1,Medico,admin@gmail.com,admin,admin,MTIzNDU=,N/A
+1,Medico,jsolis@gmail.com,Juan,Solis,YXNkZg==,N/A
+2,Paciente,viper@gmail.com,Victor,Perez,YXNkZg==,5000
+3,Medico,dflores@gmail.com,Diego,Flores,YXNkZg==,N/A
+4,Paciente,nimu@gmail.com,Nils,Muralles,YXNkZg==,5001

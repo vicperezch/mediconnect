@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
  * @author Diego Flores
  * @version 2.0
  * @creationDate 13 de octubre de 2023
- * @lastModified 26 de octubre de 2023
+ * @lastModified 02 de noviembre de 2023
  * @description Clase encargada de manejar la vista principal
  */
 
@@ -35,7 +35,6 @@ public class MainGUI {
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //JOptionPane.showMessageDialog(null, "Aun no puedes logearte", "AVISO", JOptionPane.WARNING_MESSAGE);
                 LoginGUI myLogin = new LoginGUI();
                 myLogin.setVisible();
                 myFrame.dispose();
@@ -47,7 +46,6 @@ public class MainGUI {
                 RegisterGUI myRegister = new RegisterGUI();
                 myRegister.setVisible();
                 myFrame.dispose();
-                //JOptionPane.showMessageDialog(null, "Aun no puedes registrarte", "AVISO", JOptionPane.WARNING_MESSAGE);
             }
         });
     }
