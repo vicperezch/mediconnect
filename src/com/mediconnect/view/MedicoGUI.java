@@ -1,5 +1,7 @@
 package com.mediconnect.view;
 
+import com.mediconnect.model.Usuario;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,7 +34,7 @@ public class MedicoGUI {
     /**
      * @description Constructor de la clase que contiene todos los listener
      */
-    public MedicoGUI() {
+    public MedicoGUI(Usuario usuario) {
         btnPacientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,7 +45,9 @@ public class MedicoGUI {
         btnCitas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Muestra las citas del médico
+                CitasMedicoGUI citasMedicoGUI = new CitasMedicoGUI(usuario);
+                citasMedicoGUI.setVisible(usuario);
+                myFrame.dispose();
             }
         });
 
@@ -59,9 +63,9 @@ public class MedicoGUI {
     /**
      * @description Metodo que se encargara de cargar la vista cuando sea llamada desde otra
      */
-    public void setVisible() {
+    public void setVisible(Usuario user) {
         myFrame = new JFrame("MediConnect");
-        myFrame.setContentPane(new MedicoGUI().pnlMedico);
+        myFrame.setContentPane(new MedicoGUI(user).pnlMedico);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.pack();
         Dimension tamanioPantalla= Toolkit.getDefaultToolkit().getScreenSize();

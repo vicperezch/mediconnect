@@ -107,6 +107,7 @@
                         <constraints border-constraint="Center"/>
                         <properties>
                           <font name="Microsoft Tai Le" size="16" style="0"/>
+                          <model/>
                         </properties>
                       </component>
                     </children>

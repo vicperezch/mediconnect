@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import com.mediconnect.controller.CartaMedicaController;
 
 /**
- * @author Diego Flores y Juan Solís
+ * @author Diego Flores, Juan Solís
  * @version 1.5.1
  * @creationDate 02 de octubre de 2023
  * @lastModified 02 de noviembre de 2023

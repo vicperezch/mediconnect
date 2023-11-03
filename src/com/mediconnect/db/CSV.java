@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 /**
  * @author Victor Pérez
- * @version 2.0.0
+ * @version 2.1.0
  * @creationDate 31/10/2023
  * @modificationDate 02/11/2023
  * @description Clase encargada de la persistencia de datos a través de archivos csv
@@ -27,17 +27,19 @@ public class CSV {
     private File archivoCartasMedicas;
     private File archivoRecetas;
     private DateFormat df;
+    private String ruta;
 
 
     /**
      * @description Constructor encargado de crear la instancia del archivo que almacenará la información
      */
     public CSV() {
-        this.archivoUsuarios = new File("usuarios.csv");
-        this.archivoCitas = new File("citas.csv");
-        this.archivoCartasMedicas = new File("cartasMedicas.csv");
-        this.archivoRecetas = new File("recetas.csv");
-        this.df = new SimpleDateFormat("dd/mm/yyyy");
+        this.ruta = new File("").getAbsolutePath();
+        this.archivoUsuarios = new File(ruta + "/src/com/mediconnect/db/usuarios.csv");
+        this.archivoCitas = new File(ruta +"/src/com/mediconnect/db/citas.csv");
+        this.archivoCartasMedicas = new File(ruta + "/src/com/mediconnect/db/cartasMedicas.csv");
+        this.archivoRecetas = new File(ruta + "/src/com/mediconnect/db/recetas.csv");
+        this.df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     }
 
 
@@ -46,13 +48,8 @@ public class CSV {
      * @param nuevoUsuario EL nuevo objeto Usuario a guardar
      */
     public void guardarUsuarios(Usuario nuevoUsuario) throws IOException {
+        crearArchivo("id,rol,correo,nombre,apellido,password,id_carta", archivoUsuarios);
         BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoUsuarios, true));
-
-        if (!archivoUsuarios.exists()) {
-            // Escribe el encabezado
-            escritor.write("id,rol,correo,nombre,apellido,password,id_carta");
-            escritor.newLine();
-        }
 
         // Escribe de acuerdo al rol de cada uno
         if (nuevoUsuario instanceof Medico) {
@@ -73,24 +70,17 @@ public class CSV {
 
     /**
      * @Description Guarda la información de las citas en un CSV
-     * @param citas ArrayList de las citas a guardar
+     * @param cita La cita a guardar
      */
-    public void guardarCitas(ArrayList<Cita> citas) throws IOException {
+    public void guardarCita(Cita cita) throws IOException {
+        crearArchivo("id_medico,id_paciente,fecha,establecimiento", archivoCitas);
         BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoCitas, true));
 
-        // Escribe el encabezado
-        if (!archivoCitas.exists()) {
-            escritor.write("id_medico,id_paciente,fecha,establecimiento");
-            escritor.newLine();
-        }
+        // Escribe la cita
+        escritor.write(cita.getIdMedico() + "," + cita.getIdPaciente() + "," + df.format(cita.getFecha()) +
+                "," + cita.getEstablecimiento());
 
-        // Escribe cada cita
-        for (Cita cita: citas) {
-            escritor.write(cita.getIdMedico() + "," + cita.getIdPaciente() + "," + df.format(cita.getFecha()) +
-                    "," + cita.getEstablecimiento());
-            escritor.newLine();
-        }
-
+        escritor.newLine();
         escritor.close();
     }
 
@@ -100,13 +90,8 @@ public class CSV {
      * @param carta La carta médica a guardar
      */
     public void guardarCartaMedica(CartaMedica carta) throws IOException {
+        crearArchivo("id,enfermedades,alergias,examenes", archivoCartasMedicas);
         BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoCartasMedicas, true));
-
-        // Escribe el encabezado
-        if (!archivoCartasMedicas.exists()) {
-            escritor.write("id,enfermedades,alergias,examenes");
-            escritor.newLine();
-        }
 
         // Escribe la carta
         escritor.write(carta.getId() + "," + String.join("-", carta.getEnfermedades()) + "," +
@@ -122,13 +107,8 @@ public class CSV {
      * @param recetas ArrayList de recetas a guardar
      */
     public void guardarRecetas(ArrayList<Receta> recetas) throws IOException {
+        crearArchivo("id_medico,id_paciente,numero_receta,fecha,medicamentos,justificacion,observaciones", archivoRecetas);
         BufferedWriter escritor = new BufferedWriter(new FileWriter(archivoRecetas, true));
-
-        // Escribre el encabezado
-        if (!archivoRecetas.exists()) {
-            escritor.write("id_medico,id_paciente,numero_receta,fecha,medicamentos,justificacion,observaciones");
-            escritor.newLine();
-        }
 
         // Escribe cada receta
         for (Receta receta: recetas) {
@@ -148,12 +128,9 @@ public class CSV {
      */
     public ArrayList<Usuario> leerUsuarios() throws IOException {
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        crearArchivo("id,rol,correo,nombre,apellido,password,id_carta", archivoUsuarios);
+
         BufferedReader lector = new BufferedReader(new FileReader(archivoUsuarios));
-
-        if (!archivoUsuarios.exists()) {
-            archivoUsuarios.createNewFile();
-        }
-
         String linea = lector.readLine();
 
         // Lee cada línea
@@ -189,13 +166,17 @@ public class CSV {
      */
     public ArrayList<Cita> leerCitas() throws IOException, ParseException {
         ArrayList<Cita> citas = new ArrayList<>();
+        crearArchivo("id_medico,id_paciente,fecha,establecimiento", archivoCitas);
+
         BufferedReader lector = new BufferedReader(new FileReader(archivoCitas));
         String linea = lector.readLine();
 
         while (linea != null) {
             String[] datos = linea.split(",");
 
-            citas.add(new Cita(df.parse(datos[2]), Integer.parseInt(datos[1]), Integer.parseInt(datos[0]), datos[3]));
+            if (!datos[0].equals("id_medico")) {
+                citas.add(new Cita(df.parse(datos[2]), Integer.parseInt(datos[1]), Integer.parseInt(datos[0]), datos[3]));
+            }
 
             linea = lector.readLine();
         }
@@ -211,10 +192,7 @@ public class CSV {
      */
     public ArrayList<CartaMedica> leerCartaMedica() throws IOException {
         ArrayList<CartaMedica> cartas = new ArrayList<>();
-
-        if (!archivoCartasMedicas.exists()) {
-            archivoCartasMedicas.createNewFile();
-        }
+        crearArchivo("id,enfermedades,alergias,examenes", archivoCartasMedicas);
 
         BufferedReader lector = new BufferedReader(new FileReader(archivoCartasMedicas));
         String linea = lector.readLine();
@@ -222,10 +200,12 @@ public class CSV {
         while (linea != null) {
             String[] datos = linea.split(",");
 
-            CartaMedica carta = new CartaMedica(Integer.parseInt(datos[0]), new ArrayList<>(Arrays.asList(datos[1].split("-"))),
-                    new ArrayList<>(Arrays.asList(datos[2].split("-"))), new ArrayList<>(Arrays.asList(datos[3].split("-"))));
+            if (!datos[0].equals("id")) {
+                CartaMedica carta = new CartaMedica(Integer.parseInt(datos[0]), new ArrayList<>(Arrays.asList(datos[1].split("-"))),
+                        new ArrayList<>(Arrays.asList(datos[2].split("-"))), new ArrayList<>(Arrays.asList(datos[3].split("-"))));
 
-            cartas.add(carta);
+                cartas.add(carta);
+            }
 
             linea = lector.readLine();
         }
@@ -241,20 +221,39 @@ public class CSV {
      */
     public ArrayList<Receta> leerRecetas() throws IOException, ParseException {
         ArrayList<Receta> recetas = new ArrayList<>();
+        crearArchivo("id_medico,id_paciente,numero_receta,fecha,medicamentos,justificacion,observaciones", archivoRecetas);
+
         BufferedReader lector = new BufferedReader(new FileReader(archivoRecetas));
         String linea = lector.readLine();
 
         while (linea != null) {
             String[] datos = linea.split(",");
 
-            Receta receta = new Receta(Integer.parseInt(datos[2]), df.parse(datos[3]), Integer.parseInt(datos[0]),
-                    Integer.parseInt(datos[1]), new ArrayList<>(Arrays.asList(datos[4].split("-"))), datos[5], datos[6]);
+            if (!datos[0].equals("id_medico")) {
+                Receta receta = new Receta(Integer.parseInt(datos[2]), df.parse(datos[3]), Integer.parseInt(datos[0]),
+                        Integer.parseInt(datos[1]), new ArrayList<>(Arrays.asList(datos[4].split("-"))), datos[5], datos[6]);
 
-            recetas.add(receta);
+                recetas.add(receta);
+            }
+
             linea = lector.readLine();
         }
 
         lector.close();
         return recetas;
+    }
+
+
+    /**
+     *
+     */
+    public void crearArchivo(String encabezado, File archivo) throws IOException {
+        if (!archivo.exists()) {
+            BufferedWriter escritor = new BufferedWriter(new FileWriter(archivo));
+
+            escritor.write(encabezado);
+            escritor.newLine();
+            escritor.close();
+        }
     }
 }

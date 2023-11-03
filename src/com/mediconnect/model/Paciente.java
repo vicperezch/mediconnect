@@ -2,9 +2,9 @@ package com.mediconnect.model;
 
 /**
  * @author Nils Muralles
- * @version 2.0.0
+ * @version 2.1.0
  * @creationDate 24/10/2023
- * @modificationDate 01/11/2023
+ * @modificationDate 02/11/2023
  *                   Esta clase modela a un Paciente, que hereda de la clase
  *                   Usuario, para poder ser utilizado en el programa
  */
@@ -31,16 +31,8 @@ public class Paciente extends Usuario {
 
     public int getIdCartaMedica() {return this.idCartaMedica;}
 
-    public void validarPasword() {
-
-    }
-
-    public void validarCorreo() {
-
-    }
-
-    public void validarRol() {
-
+    public String toString() {
+        return this.nombre + " " + this.apellido;
     }
 
 }

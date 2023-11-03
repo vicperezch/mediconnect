@@ -55,7 +55,6 @@ public class CartaMedicaController {
 
         enfermedades.add(nombreEnfermedad);
         cartaMedica.setEnfermedades(enfermedades);
-        System.out.println(enfermedades);
         return true;
     }
 
@@ -73,7 +72,6 @@ public class CartaMedicaController {
 
         alergias.add(nombreAlergia);
         cartaMedica.setAlergias(alergias);
-        System.out.println(alergias);
         return true;
     }
 
@@ -91,7 +89,6 @@ public class CartaMedicaController {
 
         diagnosticos.add(nombreDiagnostico);
         cartaMedica.setExamenes(diagnosticos);
-        System.out.println(diagnosticos);
         return true;
     }
 

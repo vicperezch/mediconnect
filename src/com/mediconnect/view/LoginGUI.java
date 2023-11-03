@@ -2,21 +2,17 @@ package com.mediconnect.view;
 
 import com.mediconnect.controller.UsuarioController;
 import com.mediconnect.model.Medico;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 
 /**
  * @author Diego Flores
- * @version 1.0
+ * @version 1.0.1
  * @creationDate 26 de octubre de 2023
- * @lastModified 26 de octubre de 2023
+ * @lastModified 02/11/2023
  * @description Clase encargada de manejar la vista de login
  */
 public class LoginGUI {
@@ -68,8 +64,8 @@ public class LoginGUI {
                 if (usuarioController.correoExistente(textField1.getText())) {
                     if (usuarioController.login(textField1.getText(), passwordField1.getPassword())) {
                         if (usuarioController.usuarioEnLogin(textField1.getText()) instanceof Medico) {
-                            MedicoGUI medicoGUI = new MedicoGUI();
-                            medicoGUI.setVisible();
+                            MedicoGUI medicoGUI = new MedicoGUI(usuarioController.usuarioEnLogin(textField1.getText()));
+                            medicoGUI.setVisible(usuarioController.usuarioEnLogin(textField1.getText()));
                             myFrame.dispose();
 
                         } else {

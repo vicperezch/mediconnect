@@ -113,6 +113,7 @@
                         <properties>
                           <font name="Microsoft Tai Le" size="16" style="0"/>
                           <foreground color="-16777216"/>
+                          <model/>
                         </properties>
                       </component>
                     </children>
