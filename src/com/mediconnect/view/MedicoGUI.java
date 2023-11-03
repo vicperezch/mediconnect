@@ -30,7 +30,6 @@ public class MedicoGUI {
     private JButton btnCitas;
     private JButton btnRecetas;
 
-
     /**
      * @description Constructor de la clase que contiene todos los listener
      */
@@ -54,27 +53,30 @@ public class MedicoGUI {
         btnRecetas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Crea una receta
+                RecetaMedica recetaMedicaGUI = new RecetaMedica(usuario);
+                recetaMedicaGUI.setVisible(usuario);
+                myFrame.dispose();
             }
         });
     }
 
-
     /**
-     * @description Metodo que se encargara de cargar la vista cuando sea llamada desde otra
+     * @description Metodo que se encargara de cargar la vista cuando sea llamada
+     *              desde otra
      */
     public void setVisible(Usuario user) {
         myFrame = new JFrame("MediConnect");
         myFrame.setContentPane(new MedicoGUI(user).pnlMedico);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.pack();
-        Dimension tamanioPantalla= Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension tamanioPantalla = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension tamanioVentana = myFrame.getSize();
         if (tamanioVentana.height > tamanioPantalla.height)
             tamanioVentana.height = tamanioPantalla.height;
         if (tamanioVentana.width > tamanioPantalla.width)
             tamanioVentana.width = tamanioPantalla.width;
-        myFrame.setLocation((tamanioPantalla.width - tamanioVentana.width) / 2, (tamanioPantalla.height - tamanioVentana.height) / 2);
+        myFrame.setLocation((tamanioPantalla.width - tamanioVentana.width) / 2,
+                (tamanioPantalla.height - tamanioVentana.height) / 2);
         myFrame.setResizable(false);
         myFrame.setVisible(true);
     }
