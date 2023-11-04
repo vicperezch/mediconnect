@@ -29,6 +29,7 @@ public class PacienteGUI {
     private JLabel lblCartaMedica;
     private JLabel lblProximasCitas;
     private JLabel lblMedicinas;
+    private JButton btnRegresar;
 
     /**
      * @description Constructor de la clase Paciente
@@ -55,6 +56,14 @@ public class PacienteGUI {
             public void actionPerformed(ActionEvent e) {
                 RecetasMedicasPaciente myRecetas = new RecetasMedicasPaciente(usuario);
                 myRecetas.setVisible(usuario);
+                myFrame.dispose();
+            }
+        });
+        btnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginGUI myLogin = new LoginGUI();
+                myLogin.setVisible();
                 myFrame.dispose();
             }
         });

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 
 /**
  * @author Victor Pérez
@@ -29,6 +30,7 @@ public class MedicoGUI {
     private JPanel pnlSubheader;
     private JButton btnCitas;
     private JButton btnRecetas;
+    private JButton btnRegresar;
 
     /**
      * @description Constructor de la clase que contiene todos los listener
@@ -55,6 +57,14 @@ public class MedicoGUI {
             public void actionPerformed(ActionEvent e) {
                 RecetaMedica recetaMedicaGUI = new RecetaMedica(usuario);
                 recetaMedicaGUI.setVisible(usuario);
+                myFrame.dispose();
+            }
+        });
+        btnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginGUI myLogin = new LoginGUI();
+                myLogin.setVisible();
                 myFrame.dispose();
             }
         });

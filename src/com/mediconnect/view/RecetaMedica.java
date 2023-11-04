@@ -29,6 +29,7 @@ public class RecetaMedica {
     private JTextField txtObservaciones;
     private JLabel lblAgregarRecetas;
     private JTable tblRecetas;
+    private JButton btnRegresar;
     RecetaMedicaController recetaMedicaController = new RecetaMedicaController();
 
     public RecetaMedica(Usuario usuarioMedico) {
@@ -63,6 +64,14 @@ public class RecetaMedica {
                     JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al agregar la receta", "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        });
+        btnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MedicoGUI myMedic = new MedicoGUI(usuarioMedico);
+                myMedic.setVisible(usuarioMedico);
+                myFrame.dispose();
             }
         });
     }
