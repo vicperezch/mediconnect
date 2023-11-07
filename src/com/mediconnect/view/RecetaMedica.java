@@ -39,6 +39,11 @@ public class RecetaMedica {
                 new DefaultComboBoxModel<String>(recetaMedicaController.obtenerPacientes().toArray(new String[0])));
         tblRecetas.setModel(modeloTabla);
 
+        ArrayList<String> recetas = recetaMedicaController.obtenerRecetas();
+        for (String receta : recetas) {
+            modeloTabla.addRow(receta.split("-"));
+        }
+
         btnMedicamentos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

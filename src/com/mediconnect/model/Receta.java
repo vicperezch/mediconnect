@@ -1,6 +1,5 @@
 package com.mediconnect.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
@@ -17,7 +16,7 @@ public class Receta {
     private Date fechaEmision;
     private int idMedico;
     private int idPaciente;
-    private ArrayList<String> medicamentos;
+    private String medicamentos;
     private String justificacionReceta;
     private String observaciones;
 
@@ -32,7 +31,7 @@ public class Receta {
      * @param justificacionReceta La explicación del médico
      * @param observaciones       Observaciones que realiza el médico
      */
-    public Receta(int numeroReceta, Date fechaEmision, int idMedico, int idPaciente, ArrayList<String> medicamentos,
+    public Receta(int numeroReceta, Date fechaEmision, int idMedico, int idPaciente, String medicamentos,
             String justificacionReceta, String observaciones) {
         this.numeroReceta = numeroReceta;
         this.fechaEmision = fechaEmision;
@@ -116,20 +115,20 @@ public class Receta {
     }
 
     /**
-     * Obtiene la lista de medicamentos que contiene la receta
+     * Obtiene el medicamento que contiene la receta
      * 
-     * @return Lista de medicamentos como un ArrayList
+     * @return Medicamento de la receta
      */
-    public ArrayList<String> getMedicamentos() {
+    public String getMedicamentos() {
         return medicamentos;
     }
 
     /**
-     * Actualiza la lista de medicamentos
+     * Actualiza el medicamento
      * 
-     * @param medicamentos Nueva lista de medicamentos
+     * @param medicamentos Nuevo medicamento
      */
-    public void setMedicamentos(ArrayList<String> medicamentos) {
+    public void setMedicamentos(String medicamentos) {
         this.medicamentos = medicamentos;
     }
 
@@ -176,7 +175,7 @@ public class Receta {
      */
     public String toString(String nombrePaciente) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        return nombrePaciente + "-" + df.format(fechaEmision) + "-" + medicamentos.get(0) + " "
+        return nombrePaciente + "-" + df.format(fechaEmision) + "-" + medicamentos + " "
                 + justificacionReceta + " "
                 + observaciones;
     }

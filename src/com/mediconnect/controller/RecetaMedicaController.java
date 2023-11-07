@@ -59,24 +59,22 @@ public class RecetaMedicaController {
         String nombreApellido = paciente.split(" ")[1];
         int id_paciente = 0;
         ArrayList<Receta> recetas = new ArrayList<Receta>();
-        ArrayList<String> listaMedicamentos = new ArrayList<String>();
-        listaMedicamentos.add(medicamentos);
 
         try {
 
             ArrayList<Usuario> usuarios = csv.leerUsuarios();
 
-            for (Usuario usuario: usuarios) {
+            for (Usuario usuario : usuarios) {
                 if (usuario.getNombre().equals(nombrePaciente) && usuario.getApellido().equals(nombreApellido)) {
                     id_paciente = usuario.getId();
                 }
             }
 
             Receta nuevaReceta = new Receta(new Random().nextInt(9000) + 1000, new Date(), medico.getId(), id_paciente,
-            listaMedicamentos, justificacion, observaciones);
+                    medicamentos, justificacion, observaciones);
 
             recetas.add(nuevaReceta);
-            
+
             csv.guardarRecetas(recetas);
             return true;
 
@@ -105,7 +103,16 @@ public class RecetaMedicaController {
             recetas = csv.leerRecetas();
 
             for (Receta receta : recetas) {
-                infoRecetas.add(receta.toString());
+                String nombrePaciente = null;
+                int idPaciente = receta.getIdPaciente();
+
+                for (Usuario usuario : csv.leerUsuarios()) {
+                    if (usuario instanceof Paciente && usuario.getId() == idPaciente) {
+                        nombrePaciente = usuario.getNombre() + " " + usuario.getApellido();
+                    }
+                }
+
+                infoRecetas.add(receta.toString(nombrePaciente));
             }
 
         } catch (IOException | ParseException e) {
@@ -122,18 +129,18 @@ public class RecetaMedicaController {
     public ArrayList<ArrayList<String>> obtenerRecetasPaciente(int idPaciente) {
         ArrayList<Receta> recetas;
         ArrayList<ArrayList<String>> infoRecetas = new ArrayList<>();
-    
+
         try {
             recetas = csv.leerRecetas();
-    
+
             for (Receta receta : recetas) {
                 if (receta.getIdPaciente() == idPaciente) {
 
                     ArrayList<String> recetaInfo = new ArrayList<>();
-                    recetaInfo.add(receta.getMedicamentos().get(0));
+                    recetaInfo.add(receta.getMedicamentos());
                     recetaInfo.add(receta.getJustificacionReceta());
                     recetaInfo.add(receta.getObservaciones());
-                    
+
                     infoRecetas.add(recetaInfo);
                 }
             }
@@ -141,7 +148,7 @@ public class RecetaMedicaController {
         } catch (IOException | ParseException e) {
             System.out.println("Error al leer las recetas");
         }
-    
+
         return infoRecetas;
     }
 }
