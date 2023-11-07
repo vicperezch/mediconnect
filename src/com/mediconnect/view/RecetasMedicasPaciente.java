@@ -36,7 +36,12 @@ public class RecetasMedicasPaciente {
      */
     public RecetasMedicasPaciente(Paciente usuario) {
         String[] col = {"Medicamento", "Justificación", "Observaciones"};
-        DefaultTableModel modeloTablaRecetas = new DefaultTableModel(col, 0);
+        DefaultTableModel modeloTablaRecetas = new DefaultTableModel(col, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
         tblRecetas.setModel(modeloTablaRecetas);
 
         ArrayList<ArrayList<String>> recetas = recetaController.obtenerRecetasPaciente(usuario.getId());

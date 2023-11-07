@@ -28,23 +28,4 @@ public class MedicoController {
         String listaPacientes = "";
          return listaPacientes;
     }
-
-
-    public void verCitas() {
-
-    }
-
-
-    public void nuevoDiagnostico() {
-
-    }
-
-
-    public void nuevaCita() {
-
-    }
-
-    public void nuevaReceta() {
-
-    }
 }

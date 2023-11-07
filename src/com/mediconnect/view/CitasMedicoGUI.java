@@ -34,7 +34,12 @@ public class CitasMedicoGUI {
 
     public CitasMedicoGUI(Usuario usuario) {
         String[] col = {"Fecha", "Establecimiento"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(col, 0);
+        DefaultTableModel modeloTabla = new DefaultTableModel(col, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
         cmbPaciente.setModel(new DefaultComboBoxModel<String>(citaController.obtenerPacientes().toArray(new String[0])));
         tblCitas.setModel(modeloTabla);
 

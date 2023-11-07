@@ -44,9 +44,21 @@ public class CartaMedicaPacienteGUI {
         String[] col2 = {"Alergias"};
         String[] col3 = {"Exámenes"};
 
-        DefaultTableModel modeloTablaEnfermedades = new DefaultTableModel(col, 0);
-        DefaultTableModel modeloTablaAlergias = new DefaultTableModel(col2, 0);
-        DefaultTableModel modeloTablaExamenes = new DefaultTableModel(col3, 0);
+        DefaultTableModel modeloTablaEnfermedades = new DefaultTableModel(col, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        DefaultTableModel modeloTablaAlergias = new DefaultTableModel(col2, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        DefaultTableModel modeloTablaExamenes = new DefaultTableModel(col3, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
         tblEnfermedades.setModel(modeloTablaEnfermedades);
         tblAlergias.setModel(modeloTablaAlergias);

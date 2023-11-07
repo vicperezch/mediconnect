@@ -1,4 +1,3 @@
-id,rol,correo,nombre,apellido,password,id_carta
-1,Medico,medico,medico,medico,MTIzNDU=,N/A
-2,Paciente,paciente,paciente,paciente,MTIzNDU=,5000
-3,Paciente,pacientedos,Castraun,Coclis,MTIzNDU=,5001
+id,rol,correo,nombre,apellido,password,id_carta1,Medico,jsolis,Juan,Solis,MTIzNDU2,N/A
+1,Medico,jsolis@gmail.com,Juan,Solis,YXNkZg==,N/A
+2,Paciente,dflores@gmail.com,Diego,Flores,YXNkZg==,5000

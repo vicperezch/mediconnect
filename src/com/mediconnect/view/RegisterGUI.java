@@ -76,7 +76,7 @@ public class RegisterGUI {
                             myLogin.setVisible();
                             myFrame.dispose();
                         } else {
-                            JOptionPane.showMessageDialog(myFrame, "El correo ya se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(myFrame, "El correo no es válido o ya se encuentra registrado", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                 }

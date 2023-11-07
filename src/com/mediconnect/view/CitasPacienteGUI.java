@@ -36,7 +36,12 @@ public class CitasPacienteGUI {
      */
     public CitasPacienteGUI(Paciente usuario) {
         String[] col = {"Fecha", "Establecimiento"};
-        DefaultTableModel modeloTablaCitas = new DefaultTableModel(col, 0);
+        DefaultTableModel modeloTablaCitas = new DefaultTableModel(col, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
         tblCitas.setModel(modeloTablaCitas);
 
         ArrayList<String> citas = citaController.obtenerCitasPaciente(usuario.getId());

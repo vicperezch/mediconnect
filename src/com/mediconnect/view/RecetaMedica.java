@@ -34,9 +34,13 @@ public class RecetaMedica {
 
     public RecetaMedica(Usuario usuarioMedico) {
         String[] col = { "Paciente", "Fecha", "Receta" };
-        DefaultTableModel modeloTabla = new DefaultTableModel(col, 0);
-        cmbPaciente.setModel(
-                new DefaultComboBoxModel<String>(recetaMedicaController.obtenerPacientes().toArray(new String[0])));
+        DefaultTableModel modeloTabla = new DefaultTableModel(col, 0) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        cmbPaciente.setModel(new DefaultComboBoxModel<String>(recetaMedicaController.obtenerPacientes().toArray(new String[0])));
         tblRecetas.setModel(modeloTabla);
 
         ArrayList<String> recetas = recetaMedicaController.obtenerRecetas();

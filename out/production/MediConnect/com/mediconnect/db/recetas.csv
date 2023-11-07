@@ -1,5 +1,2 @@
-id_medico,id_paciente,numero_receta,fecha,medicamentos,justificacion,observaciones
-1,2,7532,06/11/2023 18:39,Ibuprofeno,Porque si,3 veces al día
-1,3,1985,06/11/2023 18:43,medicamentos,justificacion,observaciones
-1,3,8171,06/11/2023 18:56,aaaa,bbb,cccc
-1,2,9489,06/11/2023 18:56,asdfasd,JDOASJPDJS,sjado
+id_medico,id_paciente,numero_receta,fecha,medicamentos,justificacion,observaciones4,6,6609,07/11/2023 17:16,Acetaminofen,Esta enfermo,No se
+1,2,6917,07/11/2023 17:35,Acetaminofen,Enfermo,Es tilin
