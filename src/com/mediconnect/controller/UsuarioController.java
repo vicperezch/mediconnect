@@ -27,11 +27,12 @@ public class UsuarioController {
      * Método que verifica que el correo ingresado por el usuario sea válido
      * 
      * @param correo El nuevo correo ingresado por el usuario
-     * y
+     *               y
      * @return Si el correo es válido o no lo es
      */
     public boolean formatoCorreoCorrecto(String correo) {
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Pattern pattern = Pattern.compile(
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         Matcher mather = pattern.matcher(correo);
 
@@ -99,7 +100,8 @@ public class UsuarioController {
      * 
      * @return Si el registro del usuario se llevó a cabo correctamente
      */
-    public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol, int idCartaMedica) {
+    public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol,
+            int idCartaMedica) {
 
         if (formatoCorreoCorrecto(correo)) {
             if (!correoExistente(correo)) {
@@ -155,7 +157,8 @@ public class UsuarioController {
     }
 
     /**
-     * Método que se encarga de obtener al usuario que acaba de iniciar sesión para mostrarle opciones especificas
+     * Método que se encarga de obtener al usuario que acaba de iniciar sesión para
+     * mostrarle opciones especificas
      * 
      * @param correo El correo del usuario
      * 
@@ -179,5 +182,24 @@ public class UsuarioController {
         }
 
         return usuarioEnLogin;
+    }
+
+    public Usuario usuarioPorNombre(String nombre, String apellido) {
+        Usuario usuario = null;
+
+        try {
+            listaUsuarios = csv.leerUsuarios();
+        } catch (Exception e) {
+            System.out.println("Error al leer los datos");
+        }
+
+        for (Usuario usuarioActual : listaUsuarios) {
+            if (usuarioActual.getNombre().equals(nombre) && usuarioActual.getApellido().equals(apellido)) {
+                usuario = usuarioActual;
+                return usuario;
+            }
+        }
+
+        return usuario;
     }
 }

@@ -1,6 +1,7 @@
 package com.mediconnect.view;
 
 import com.mediconnect.controller.RecetaMedicaController;
+import com.mediconnect.model.Medico;
 import com.mediconnect.model.Paciente;
 
 import javax.swing.*;
@@ -34,8 +35,8 @@ public class RecetasMedicasPaciente {
     /**
      * @description Constructor de la clase RecetasMedicasPaciente
      */
-    public RecetasMedicasPaciente(Paciente usuario) {
-        String[] col = {"Medicamento", "Justificación", "Observaciones"};
+    public RecetasMedicasPaciente(Paciente usuario, Medico usuairoMedico) {
+        String[] col = { "Medicamento", "Justificación", "Observaciones" };
         DefaultTableModel modeloTablaRecetas = new DefaultTableModel(col, 0) {
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -52,9 +53,15 @@ public class RecetasMedicasPaciente {
         btnRegresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PacienteGUI menuPaciente = new PacienteGUI(usuario);
-                menuPaciente.setVisible(usuario);
-                myFrame.dispose();
+                if (usuairoMedico == null) {
+                    PacienteGUI menuPaciente = new PacienteGUI(usuario);
+                    menuPaciente.setVisible(usuario);
+                    myFrame.dispose();
+                } else {
+                    VerPacientesGUI menuVerPacientes = new VerPacientesGUI(usuairoMedico);
+                    menuVerPacientes.setVisible(usuairoMedico);
+                    myFrame.dispose();
+                }
             }
         });
     }
@@ -62,18 +69,19 @@ public class RecetasMedicasPaciente {
     /**
      * @description Método que se encarga de cargar la vista cuando esta es llamada
      */
-    public void setVisible(Paciente user) {
+    public void setVisible(Paciente user, Medico userMedico) {
         myFrame = new JFrame("MediConnect");
-        myFrame.setContentPane(new RecetasMedicasPaciente(user).pnlRecetasMedicasPaciente);
+        myFrame.setContentPane(new RecetasMedicasPaciente(user, userMedico).pnlRecetasMedicasPaciente);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.pack();
-        Dimension tamanioPantalla= Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension tamanioPantalla = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension tamanioVentana = myFrame.getSize();
         if (tamanioVentana.height > tamanioPantalla.height)
             tamanioVentana.height = tamanioPantalla.height;
         if (tamanioVentana.width > tamanioPantalla.width)
             tamanioVentana.width = tamanioPantalla.width;
-        myFrame.setLocation((tamanioPantalla.width - tamanioVentana.width) / 2, (tamanioPantalla.height - tamanioVentana.height) / 2);
+        myFrame.setLocation((tamanioPantalla.width - tamanioVentana.width) / 2,
+                (tamanioPantalla.height - tamanioVentana.height) / 2);
         myFrame.setResizable(false);
         myFrame.setVisible(true);
     }

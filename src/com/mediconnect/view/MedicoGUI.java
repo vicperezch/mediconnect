@@ -39,7 +39,9 @@ public class MedicoGUI {
         btnPacientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Muestra los pacientes asignados al médico
+                VerPacientesGUI verPacientesGUI = new VerPacientesGUI(usuario);
+                verPacientesGUI.setVisible(usuario);
+                myFrame.dispose();
             }
         });
 

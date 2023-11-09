@@ -38,24 +38,24 @@ public class PacienteGUI {
         btnCartaMedica.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CartaMedicaPacienteGUI myCartaMedica = new CartaMedicaPacienteGUI(usuario);
-                myCartaMedica.setVisible(usuario);
+                CartaMedicaPacienteGUI myCartaMedica = new CartaMedicaPacienteGUI(usuario, null);
+                myCartaMedica.setVisible(usuario, null);
                 myFrame.dispose();
             }
         });
         btnProximasCitas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CitasPacienteGUI myCitas = new CitasPacienteGUI(usuario);
-                myCitas.setVisible(usuario);
+                CitasPacienteGUI myCitas = new CitasPacienteGUI(usuario, null);
+                myCitas.setVisible(usuario, null);
                 myFrame.dispose();
             }
         });
         btnMedicinas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RecetasMedicasPaciente myRecetas = new RecetasMedicasPaciente(usuario);
-                myRecetas.setVisible(usuario);
+                RecetasMedicasPaciente myRecetas = new RecetasMedicasPaciente(usuario, null);
+                myRecetas.setVisible(usuario, null);
                 myFrame.dispose();
             }
         });
@@ -77,13 +77,14 @@ public class PacienteGUI {
         myFrame.setContentPane(new PacienteGUI(user).pnlPaciente);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.pack();
-        Dimension tamanioPantalla= Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension tamanioPantalla = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension tamanioVentana = myFrame.getSize();
         if (tamanioVentana.height > tamanioPantalla.height)
             tamanioVentana.height = tamanioPantalla.height;
         if (tamanioVentana.width > tamanioPantalla.width)
             tamanioVentana.width = tamanioPantalla.width;
-        myFrame.setLocation((tamanioPantalla.width - tamanioVentana.width) / 2, (tamanioPantalla.height - tamanioVentana.height) / 2);
+        myFrame.setLocation((tamanioPantalla.width - tamanioVentana.width) / 2,
+                (tamanioPantalla.height - tamanioVentana.height) / 2);
         myFrame.setResizable(false);
         myFrame.setVisible(true);
     }
