@@ -132,7 +132,7 @@
                         <properties>
                           <font name="Microsoft Tai Le" size="18" style="0"/>
                           <foreground color="-16777216"/>
-                          <text value="Hora"/>
+                          <text value="Hora (hh:mm)"/>
                         </properties>
                       </component>
                       <component id="6ea1e" class="javax.swing.JTextField" binding="txtHora">
@@ -184,7 +184,7 @@
                         <properties>
                           <font name="Microsoft Tai Le" size="18" style="0"/>
                           <foreground color="-16777216"/>
-                          <text value="Fecha                "/>
+                          <text value="Fecha (dd/MM/yyyy)"/>
                         </properties>
                       </component>
                       <component id="fa263" class="javax.swing.JTextField" binding="txtFecha">
@@ -252,9 +252,12 @@
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
+                      <gridColor color="-16777216"/>
                       <opaque value="true"/>
                       <rowHeight value="40"/>
                       <rowMargin value="1"/>
+                      <selectionBackground color="-5709343"/>
+                      <selectionForeground color="-16777216"/>
                       <showHorizontalLines value="true"/>
                       <showVerticalLines value="true"/>
                     </properties>

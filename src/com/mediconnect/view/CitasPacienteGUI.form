@@ -103,7 +103,10 @@
                   <focusable value="false"/>
                   <font name="Microsoft Tai Le" size="16" style="0"/>
                   <foreground color="-16777216"/>
+                  <gridColor color="-16777216"/>
                   <rowHeight value="40"/>
+                  <selectionBackground color="-5709343"/>
+                  <selectionForeground color="-16777216"/>
                 </properties>
               </component>
             </children>

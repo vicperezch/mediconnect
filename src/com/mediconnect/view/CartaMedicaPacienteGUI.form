@@ -102,7 +102,10 @@
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
+                      <gridColor color="-16777216"/>
                       <rowHeight value="40"/>
+                      <selectionBackground color="-5709343"/>
+                      <selectionForeground color="-16777216"/>
                     </properties>
                   </component>
                 </children>
@@ -133,7 +136,10 @@
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
+                      <gridColor color="-16777216"/>
                       <rowHeight value="40"/>
+                      <selectionBackground color="-5709343"/>
+                      <selectionForeground color="-16777216"/>
                     </properties>
                   </component>
                 </children>
@@ -164,7 +170,10 @@
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
+                      <gridColor color="-16777216"/>
                       <rowHeight value="40"/>
+                      <selectionBackground color="-5709343"/>
+                      <selectionForeground color="-16777216"/>
                     </properties>
                   </component>
                 </children>
