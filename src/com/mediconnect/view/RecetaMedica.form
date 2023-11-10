@@ -212,7 +212,7 @@
                     <properties>
                       <font name="Microsoft Tai Le" size="20" style="1"/>
                       <foreground color="-16777216"/>
-                      <text value="Aqui se muestran las recetas"/>
+                      <text value="Recetas realizadas"/>
                     </properties>
                   </component>
                   <component id="6bc87" class="javax.swing.JTable" binding="tblRecetas">

@@ -34,6 +34,7 @@ public class MedicoGUI {
 
     /**
      * @description Constructor de la clase que contiene todos los listener
+     * @param usuario El usuario médico que actualmente está con sesión iniciada
      */
     public MedicoGUI(Usuario usuario) {
         btnPacientes.addActionListener(new ActionListener() {
@@ -75,6 +76,7 @@ public class MedicoGUI {
     /**
      * @description Metodo que se encargara de cargar la vista cuando sea llamada
      *              desde otra
+     * @param user El usuario médico que actualmente está con sesión iniciada
      */
     public void setVisible(Usuario user) {
         myFrame = new JFrame("MediConnect");

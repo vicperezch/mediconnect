@@ -11,7 +11,7 @@ import com.mediconnect.controller.CartaMedicaController;
  * @version 1.5.1
  * @creationDate 02 de octubre de 2023
  * @lastModified 02 de noviembre de 2023
- * @description Clase encargada de manejar la vista para registrar la carta médica de un usuario paciente
+ * @description Clase encargada de manejar la vista para la carta médica desde el punto de vista de los médicos
  */
 
 public class CartaMedicaGUI {
@@ -108,7 +108,7 @@ public class CartaMedicaGUI {
                     myFrame.dispose();
 
                 } else {
-                    JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al registrar el paciente", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al registrar el paciente, asegurese de ingresar por lo menos una enfermedad, una alergia y un exámen", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -116,6 +116,11 @@ public class CartaMedicaGUI {
 
     /**
      * @description Metodo que se encargara de cargar la vista cuando sea llamada desde otra
+     * @param nombre El nombre del usuario
+     * @param apellido El apellido del usuario
+     * @param correo El correo del usuario
+     * @param password La contraseña del usuario
+     * @param rol El rol del usuario
      */
     public void setVisible(String nombre, String apellido, String correo, String password, String rol) {
         myFrame = new JFrame("MediConnect");

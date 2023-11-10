@@ -14,6 +14,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * @author Diego Flores, Nils Muralles
+ * @version 1.1.0
+ * @creationDate 10 de noviembre de 2023
+ * @lastModified 11 de noviembre de 2023
+ * @description Clase encargada de manejar la vista ver pacientes para el médico
+ */
 public class VerPacientesGUI {
     private static JFrame myFrame;
     private JPanel pnlMisPacientes;
@@ -36,6 +43,10 @@ public class VerPacientesGUI {
     CitaController citaController = new CitaController();
     UsuarioController usuarioController = new UsuarioController();
 
+    /**
+     * @description Constructor de la clase CartaMedicaPaciente
+     * @param usuarioMedico El usuario médico que actualmente está con sesión iniciada
+     */
     public VerPacientesGUI(Usuario usuarioMedico) {
 
         cmbPaciente
@@ -52,44 +63,75 @@ public class VerPacientesGUI {
         btnCartaMedica.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String usuarioSeleccionado = Objects.requireNonNull(cmbPaciente.getSelectedItem()).toString();
-                String[] datosUsuario = usuarioSeleccionado.split(" ");
-                Paciente pacienteSeleccionado = (Paciente) usuarioController.usuarioPorNombre(datosUsuario[0],
-                        datosUsuario[1]);
-                CartaMedicaPacienteGUI cartaMedica = new CartaMedicaPacienteGUI(pacienteSeleccionado,
-                        (Medico) usuarioMedico);
-                cartaMedica.setVisible(pacienteSeleccionado, (Medico) usuarioMedico);
-                myFrame.dispose();
+                try {
+                    Object selectedPaciente = cmbPaciente.getSelectedItem();
+                    if (selectedPaciente != null) {
+                        String usuarioSeleccionado = selectedPaciente.toString();
+                        String[] datosUsuario = usuarioSeleccionado.split(" ");
+                        Paciente pacienteSeleccionado = (Paciente) usuarioController.usuarioPorNombre(datosUsuario[0],
+                                datosUsuario[1]);
+                        CartaMedicaPacienteGUI cartaMedica = new CartaMedicaPacienteGUI(pacienteSeleccionado,
+                                (Medico) usuarioMedico);
+                        cartaMedica.setVisible(pacienteSeleccionado, (Medico) usuarioMedico);
+                        myFrame.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(myFrame, "No hay pacientes disponibles para seleccionar", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(myFrame, "Debe asegurarse de que ya existan pacientes registrados", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         btnProximasCitas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String usuarioSeleccionado = Objects.requireNonNull(cmbPaciente.getSelectedItem()).toString();
-                String[] datosUsuario = usuarioSeleccionado.split(" ");
-                Paciente pacienteSeleccionado = (Paciente) usuarioController.usuarioPorNombre(datosUsuario[0],
-                        datosUsuario[1]);
-                CitasPacienteGUI citasPaciente = new CitasPacienteGUI(pacienteSeleccionado,
-                        (Medico) usuarioMedico);
-                citasPaciente.setVisible(pacienteSeleccionado, (Medico) usuarioMedico);
-                myFrame.dispose();
+                try {
+                    Object selectedPaciente = cmbPaciente.getSelectedItem();
+                    if (selectedPaciente != null) {
+                        String usuarioSeleccionado = selectedPaciente.toString();
+                        String[] datosUsuario = usuarioSeleccionado.split(" ");
+                        Paciente pacienteSeleccionado = (Paciente) usuarioController.usuarioPorNombre(datosUsuario[0],
+                                datosUsuario[1]);
+                        CitasPacienteGUI citasPaciente = new CitasPacienteGUI(pacienteSeleccionado,
+                                (Medico) usuarioMedico);
+                        citasPaciente.setVisible(pacienteSeleccionado, (Medico) usuarioMedico);
+                        myFrame.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(myFrame, "No hay pacientes disponibles para seleccionar", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(myFrame, "Debe asegurarse de que ya existan pacientes registrados", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         btnMedicinas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String usuarioSeleccionado = Objects.requireNonNull(cmbPaciente.getSelectedItem()).toString();
-                String[] datosUsuario = usuarioSeleccionado.split(" ");
-                Paciente pacienteSeleccionado = (Paciente) usuarioController.usuarioPorNombre(datosUsuario[0],
-                        datosUsuario[1]);
-                RecetasMedicasPaciente recetaPaciente = new RecetasMedicasPaciente(pacienteSeleccionado,
-                        (Medico) usuarioMedico);
-                recetaPaciente.setVisible(pacienteSeleccionado, (Medico) usuarioMedico);
-                myFrame.dispose();
+                try {
+                    Object selectedPaciente = cmbPaciente.getSelectedItem();
+                    if (selectedPaciente != null) {
+                        String usuarioSeleccionado = selectedPaciente.toString();
+                        String[] datosUsuario = usuarioSeleccionado.split(" ");
+                        Paciente pacienteSeleccionado = (Paciente) usuarioController.usuarioPorNombre(datosUsuario[0],
+                                datosUsuario[1]);
+                        RecetasMedicasPaciente recetaPaciente = new RecetasMedicasPaciente(pacienteSeleccionado,
+                                (Medico) usuarioMedico);
+                        recetaPaciente.setVisible(pacienteSeleccionado, (Medico) usuarioMedico);
+                        myFrame.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(myFrame, "No hay pacientes disponibles para seleccionar", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(myFrame, "Debe asegurarse de que ya existan pacientes registrados", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
 
+    /**
+     * @description Método que se encarga de cargar la vista cuando esta es llamada
+     * @param user El usuario médico que actualmente está con sesión iniciada
+     */
     public void setVisible(Usuario user) {
         myFrame = new JFrame("MediConnect");
         myFrame.setContentPane(new VerPacientesGUI(user).pnlMisPacientes);

@@ -18,7 +18,6 @@ import java.util.ArrayList;
  * @lastModified 02 de noviembre de 2023
  * @description Clase encargada de manejar la vista de las citas de Paciente
  */
-
 public class CitasPacienteGUI {
     private static JFrame myFrame;
     private JPanel pnlCitasPaciente;
@@ -33,7 +32,9 @@ public class CitasPacienteGUI {
     private CitaController citaController = new CitaController();
 
     /**
-     * @description Constructor de la clase CitasPacienteGUI
+     * @description Constructor de la clase CitasPaciente
+     * @param usuario El usuario paciente actualmente en sesión iniciada
+     * @param usuarioMedico El usuario médico
      */
     public CitasPacienteGUI(Paciente usuario, Medico usuarioMedico) {
         String[] col = { "Fecha", "Establecimiento" };
@@ -68,6 +69,8 @@ public class CitasPacienteGUI {
 
     /**
      * @description Método que se encarga de cargar la vista cuando esta es llamada
+     * @param user El usuario paciente actualmente en sesión iniciada
+     * @param userMedico El usuario médico
      */
     public void setVisible(Paciente user, Medico userMedico) {
         myFrame = new JFrame("MediConnect");

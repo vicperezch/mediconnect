@@ -14,6 +14,14 @@ import com.mediconnect.controller.UsuarioController;
 import com.mediconnect.model.Paciente;
 import com.mediconnect.model.Usuario;
 
+/**
+ * @author Diego Flores, Nils Muralles
+ * @version 1.1.0
+ * @creationDate 02 de noviembre de 2023
+ * @lastModified 11 de noviembre de 2023
+ * @description Clase encargada de manejar la vista de receta médica para los médicos
+ */
+
 public class RecetaMedica {
     private static JFrame myFrame;
     private JPanel pnlRecetaMedica;
@@ -32,6 +40,10 @@ public class RecetaMedica {
     private JButton btnRegresar;
     RecetaMedicaController recetaMedicaController = new RecetaMedicaController();
 
+    /**
+     * @description Constructor de la clase RecetaMedica
+     * @param usuarioMedico El usuario médico que actualmente está con sesión iniciada
+     */
     public RecetaMedica(Usuario usuarioMedico) {
         String[] col = { "Paciente", "Fecha", "Receta" };
         DefaultTableModel modeloTabla = new DefaultTableModel(col, 0) {
@@ -51,30 +63,47 @@ public class RecetaMedica {
         btnMedicamentos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String paciente = Objects.requireNonNull(cmbPaciente.getSelectedItem()).toString();
-                String medicamentos = txtMedicamentos.getText();
-                String justificacion = txtJustificacion.getText();
-                String observaciones = txtObservaciones.getText();
+                try {
+                    Object selectedPaciente = cmbPaciente.getSelectedItem();
+                    if (selectedPaciente != null) {
+                        String paciente = selectedPaciente.toString();
+                        String medicamentos = txtMedicamentos.getText();
+                        String justificacion = txtJustificacion.getText();
+                        String observaciones = txtObservaciones.getText();
 
-                boolean recetaExitosa = recetaMedicaController.agregarReceta(usuarioMedico, paciente, medicamentos,
-                        justificacion, observaciones);
+                        if (paciente.isEmpty() || medicamentos.isEmpty() || justificacion.isEmpty() || observaciones.isEmpty()){
+                            JOptionPane.showMessageDialog(myFrame, "Para agregar la receta asegurate de llenar todos los campos solicitados", "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            boolean recetaExitosa = recetaMedicaController.agregarReceta(usuarioMedico, paciente, medicamentos,
+                                    justificacion, observaciones);
 
-                if (recetaExitosa) {
-                    JOptionPane.showMessageDialog(myFrame, "La receta fue agregada correctamente", "Éxito",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    txtMedicamentos.setText("");
-                    txtJustificacion.setText("");
-                    txtObservaciones.setText("");
+                            if (recetaExitosa) {
+                                JOptionPane.showMessageDialog(myFrame, "La receta fue agregada correctamente", "Éxito",
+                                        JOptionPane.INFORMATION_MESSAGE);
+                                txtMedicamentos.setText("");
+                                txtJustificacion.setText("");
+                                txtObservaciones.setText("");
 
-                    modeloTabla.addRow(recetaMedicaController.obtenerUltimaReceta()
-                            .toString(cmbPaciente.getSelectedItem().toString()).split("-"));
+                                modeloTabla.addRow(recetaMedicaController.obtenerUltimaReceta()
+                                        .toString(cmbPaciente.getSelectedItem().toString()).split("-"));
 
-                } else {
-                    JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al agregar la receta", "Error",
+                            } else {
+                                JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al agregar la receta", "Error",
+                                        JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(myFrame, "Aún no hay pacientes disponibles para seleccionar", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(myFrame, "Para poder agregar una receta, primero asegurate de que existan pacientes registrados", "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
         btnRegresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,6 +117,7 @@ public class RecetaMedica {
     /**
      * @description Metodo que se encargara de cargar la vista cuando sea llamada
      *              desde otra
+     * @param user El usuario médico que actualmente está con sesión iniciada
      */
     public void setVisible(Usuario user) {
         myFrame = new JFrame("MediConnect");

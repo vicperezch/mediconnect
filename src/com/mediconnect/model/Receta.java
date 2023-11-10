@@ -6,10 +6,10 @@ import java.text.DateFormat;
 
 /**
  * @author Victor Pérez
- * @version 1.0.1
+ * @version 1.0.2
  * @creationDate 15/10/2023
- * @modificationDate 31/10/2023
- *                   Esta clase modela una receta médica para los pacientes
+ * @modificationDate 09/11/2023
+ * Esta clase modela una receta médica para los pacientes
  */
 public class Receta {
     private int numeroReceta;
@@ -23,13 +23,13 @@ public class Receta {
     /**
      * Este método crea una nueva instancia de Receta
      *
-     * @param numeroReceta        El número de la receta
-     * @param fechaEmision        Fecha en la que se emitió la receta
-     * @param idMedico            EL id del médico que realizó la receta
-     * @param idPaciente          El id del paciente que recibirá la receta
-     * @param medicamentos        Array con los medicamentos que contiene la receta
+     * @param numeroReceta El número de la receta
+     * @param fechaEmision Fecha en la que se emitió la receta
+     * @param idMedico EL id del médico que realizó la receta
+     * @param idPaciente El id del paciente que recibirá la receta
+     * @param medicamentos Array con los medicamentos que contiene la receta
      * @param justificacionReceta La explicación del médico
-     * @param observaciones       Observaciones que realiza el médico
+     * @param observaciones Observaciones que realiza el médico
      */
     public Receta(int numeroReceta, Date fechaEmision, int idMedico, int idPaciente, String medicamentos,
             String justificacionReceta, String observaciones) {

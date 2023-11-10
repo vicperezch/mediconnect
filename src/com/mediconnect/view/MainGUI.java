@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Diego Flores
- * @version 2.0
+ * @version 2.0.0
  * @creationDate 13 de octubre de 2023
  * @lastModified 02 de noviembre de 2023
  * @description Clase encargada de manejar la vista principal
@@ -77,6 +77,9 @@ public class MainGUI {
         myFrame.setVisible(true);
     }
 
+    /**
+     * @description Metodo que se encargara de cargar la vista cuando sea llamada desde otra
+     */
     public void setVisible() {
         myFrame = new JFrame("MediConnect");
         myFrame.setContentPane(new MainGUI().pnlMain);

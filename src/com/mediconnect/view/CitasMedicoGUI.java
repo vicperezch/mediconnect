@@ -11,6 +11,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * @author Diego Flores, Juan Solís
+ * @version 1.1.0
+ * @creationDate 02 de noviembre de 2023
+ * @lastModified 11 de noviembre de 2023
+ * @description Clase encargada de manejar la vista de las citas del Medico
+ */
 public class CitasMedicoGUI {
     private static JFrame myFrame;
     private JPanel pnlCitasMedico;
@@ -32,6 +39,10 @@ public class CitasMedicoGUI {
     private JButton btnAgregarCita;
     private CitaController citaController = new CitaController();
 
+    /**
+     * @description Constructor de la clase CitasMedico
+     * @param usuario El objeto Usuario que está usando actualmente el programa
+     */
     public CitasMedicoGUI(Usuario usuario) {
         String[] col = {"Fecha", "Establecimiento"};
         DefaultTableModel modeloTabla = new DefaultTableModel(col, 0) {
@@ -51,26 +62,36 @@ public class CitasMedicoGUI {
         btnAgregarCita.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String establecimiento = txtEstablecimiento.getText();
-                String fecha = txtFecha.getText();
-                String hora = txtHora.getText();
-                String paciente = Objects.requireNonNull(cmbPaciente.getSelectedItem()).toString();
+                try {
+                    Object selectedPaciente = cmbPaciente.getSelectedItem();
+                    if (selectedPaciente != null) {
+                        String establecimiento = txtEstablecimiento.getText();
+                        String fecha = txtFecha.getText();
+                        String hora = txtHora.getText();
+                        String paciente = selectedPaciente.toString();
 
-                boolean citaExitosa = citaController.agregarCita(usuario, paciente, establecimiento, fecha, hora);
+                        boolean citaExitosa = citaController.agregarCita(usuario, paciente, establecimiento, fecha, hora);
 
-                if (citaExitosa) {
-                    JOptionPane.showMessageDialog(myFrame, "La cita fue agregada correctamente", "Éxito",JOptionPane.INFORMATION_MESSAGE);
-                    txtEstablecimiento.setText("");
-                    txtFecha.setText("");
-                    txtHora.setText("");
+                        if (citaExitosa) {
+                            JOptionPane.showMessageDialog(myFrame, "La cita fue agregada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                            txtEstablecimiento.setText("");
+                            txtFecha.setText("");
+                            txtHora.setText("");
 
-                    modeloTabla.addRow(citaController.obtenerUltimaCita(usuario.getId()).split("-"));
+                            modeloTabla.addRow(citaController.obtenerUltimaCita(usuario.getId()).split("-"));
 
-                } else {
-                    JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al agregar la cita", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(myFrame, "Ocurrió un error al agregar la cita", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(myFrame, "Aún no hay pacientes disponibles para seleccionar", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(myFrame, "Para poder agregar una cita, asegurate de que ya existan pacientes registrados", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
         btnRegresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,6 +104,7 @@ public class CitasMedicoGUI {
 
     /**
      * @description Metodo que se encargara de cargar la vista cuando sea llamada desde otra
+     * @param user El objeto Usuario que está usando actualmente el programa
      */
     public void setVisible(Usuario user) {
         myFrame = new JFrame("MediConnect");

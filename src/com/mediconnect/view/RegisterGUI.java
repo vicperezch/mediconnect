@@ -13,7 +13,6 @@ import com.mediconnect.controller.UsuarioController;
  * @lastModified 02 de noviembre de 2023
  * @description Clase encargada de manejar la vista de registro de los usuarios
  */
-
 public class RegisterGUI {
     // Atributos de la clase
     private static JFrame myFrame;

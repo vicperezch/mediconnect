@@ -14,9 +14,9 @@ import java.util.Date;
 
 /**
  * @author Victor Pérez
- * @version 1.0.1
+ * @version 1.0.3
  * @creationDate 02/11/2023
- * @modificationDate 03/11/2023
+ * @modificationDate 09/11/2023
  * @description Clase encargada de gestionar una instancia de Cita
  */
 public class CitaController {
@@ -30,8 +30,9 @@ public class CitaController {
     }
 
     /**
-     *
-     * @return
+     * Método que obtiene todos los paciente registrados en el programa
+     * 
+     * @return Un ArrayList con los pacientes
      */
     public ArrayList<String> obtenerPacientes() {
         ArrayList<Usuario> usuarios;
@@ -55,15 +56,20 @@ public class CitaController {
 
 
     /**
-     *
+     * Método que agenda una nueva cita
+     * 
+     * @param medico El médico que agenda la cita
+     * @param paciente El paciente con quién se agendó la cita
+     * @param establecimiento El lugar en donde se llevará a cabo la cita
+     * @param fecha La fecha de la cita
+     * @param hora La hora de la cita
+     * @return Boolean que confirma si se agendó correctamente la cita
      */
     public boolean agregarCita(Usuario medico, String paciente, String establecimiento, String fecha, String hora) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String nombrePaciente = paciente.split(" ")[0];
         String nombreApellido = paciente.split(" ")[1];
         int id_paciente = 0;
-        System.out.println(fecha);
-        System.out.println(hora);
 
         try {
             Date fechaCita = df.parse(fecha + " " + hora);
@@ -86,7 +92,10 @@ public class CitaController {
 
 
     /**
-     *
+     * Método que obtiene todas las citas que un médico ha agendado
+     * 
+     * @param idMedico El id del médico que está solicitando sus citas
+     * @return El ArrayList con las citas que tendrá el médico
      */
     public ArrayList<String> obtenerCitas(int idMedico) {
         ArrayList<Cita> citas;
@@ -109,7 +118,11 @@ public class CitaController {
         return infoCitas;
     }
 
-    /*
+    /**
+     * Método que obtiene las citas que tendrá un paciente con los médico
+     * 
+     * @param idPaciente El id del áciente que está solicitando sus citas
+     * @return El ArrayList con las citas que tendrá el paciente
      * 
      */
     public ArrayList<String> obtenerCitasPaciente(int idPaciente) {
@@ -135,7 +148,10 @@ public class CitaController {
 
 
     /**
-     *
+     * Método que obtiene la última cita que ha sido agendada en el programa
+     * 
+     * @param idMedico El id del médico que agendo la última cita
+     * @return La última cita asociada al médico o null si no hay citas disponibles
      */
     public String obtenerUltimaCita(int idMedico) {
         ArrayList<String> citas = obtenerCitas(idMedico);

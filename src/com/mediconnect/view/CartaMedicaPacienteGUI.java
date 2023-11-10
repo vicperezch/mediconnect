@@ -16,10 +16,8 @@ import java.util.ArrayList;
  * @version 1.1.0
  * @creationDate 02 de noviembre de 2023
  * @lastModified 02 de noviembre de 2023
- * @description Clase encargada de manejar la vista de la carta médica de
- *              Paciente
+ * @description Clase encargada de manejar la vista de la carta médica de Paciente
  */
-
 public class CartaMedicaPacienteGUI {
     private static JFrame myFrame;
     private JPanel pnlCartaMedicaPaciente;
@@ -39,7 +37,9 @@ public class CartaMedicaPacienteGUI {
     private CartaMedicaController cartaMedicaController = new CartaMedicaController();
 
     /**
-     * @description Constructor de la clase CartaMedicaPacienteGUI
+     * @description Constructor de la clase CartaMedicaPaciente
+     * @param usuario El objeto paciente de la carta médica
+     * @param usuarioMedico El objeto médico
      */
     public CartaMedicaPacienteGUI(Paciente usuario, Medico usuarioMedico) {
         String[] col = { "Enfermedades" };
@@ -99,6 +99,8 @@ public class CartaMedicaPacienteGUI {
 
     /**
      * @description Método que se encarga de cargar la vista cuando esta es llamada
+     * @param user El objeto usuario paciente
+     * @param userMedico El objeto usuario médico
      */
     public void setVisible(Paciente user, Medico userMedico) {
         myFrame = new JFrame("MediConnect");

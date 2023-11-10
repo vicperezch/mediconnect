@@ -13,12 +13,11 @@ import java.util.ArrayList;
 
 /**
  * @author Diego Flores, Juan Solís
- * @version 1.0.1
+ * @version 1.0.2
  * @creationDate 02 de noviembre de 2023
- * @lastModified 02 de noviembre de 2023
+ * @lastModified 11 de noviembre de 2023
  * @description Clase encargada de manejar la vista de las recetas de Paciente
  */
-
 public class RecetasMedicasPaciente {
     private static JFrame myFrame;
     private JPanel pnlRecetasMedicasPaciente;
@@ -34,6 +33,8 @@ public class RecetasMedicasPaciente {
 
     /**
      * @description Constructor de la clase RecetasMedicasPaciente
+     * @param usuario El usuario paciente actualmente en sesión iniciada
+     * @param usuairoMedico El usuario médico
      */
     public RecetasMedicasPaciente(Paciente usuario, Medico usuairoMedico) {
         String[] col = { "Medicamento", "Justificación", "Observaciones" };
@@ -68,6 +69,8 @@ public class RecetasMedicasPaciente {
 
     /**
      * @description Método que se encarga de cargar la vista cuando esta es llamada
+     * @param user El usuario paciente actualmente en sesión iniciada
+     * @param userMedico El usuario médico
      */
     public void setVisible(Paciente user, Medico userMedico) {
         myFrame = new JFrame("MediConnect");

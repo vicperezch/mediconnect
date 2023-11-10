@@ -99,10 +99,12 @@
                   <component id="5873d" class="javax.swing.JTable" binding="tblEnfermedades">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <autoResizeMode value="0"/>
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
                       <gridColor color="-16777216"/>
+                      <preferredScrollableViewportSize width="150" height="80"/>
                       <rowHeight value="40"/>
                       <selectionBackground color="-5709343"/>
                       <selectionForeground color="-16777216"/>
@@ -133,10 +135,12 @@
                   <component id="155d6" class="javax.swing.JTable" binding="tblExamenes">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <autoResizeMode value="0"/>
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
                       <gridColor color="-16777216"/>
+                      <preferredScrollableViewportSize width="150" height="80"/>
                       <rowHeight value="40"/>
                       <selectionBackground color="-5709343"/>
                       <selectionForeground color="-16777216"/>
@@ -167,10 +171,12 @@
                   <component id="64240" class="javax.swing.JTable" binding="tblAlergias">
                     <constraints border-constraint="Center"/>
                     <properties>
+                      <autoResizeMode value="0"/>
                       <background color="-5584940"/>
                       <font name="Microsoft Tai Le" size="14" style="0"/>
                       <foreground color="-16777216"/>
                       <gridColor color="-16777216"/>
+                      <preferredScrollableViewportSize width="150" height="80"/>
                       <rowHeight value="40"/>
                       <selectionBackground color="-5709343"/>
                       <selectionForeground color="-16777216"/>

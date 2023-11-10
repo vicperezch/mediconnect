@@ -2,19 +2,17 @@ package com.mediconnect.controller;
 
 /**
     * @author Juan Solís
-    * @version 1.1.0
+    * @version 1.1.3
     * @creationDate 24/10/2023
-    * @modificationDate 03/10/2023
+    * @modificationDate 09/11/2023
     * Esta clase se encarga de llevar el control de la clase modelo de CartaMedica
 */
 
 import com.mediconnect.model.CartaMedica;
-import com.mediconnect.model.Medico;
 import com.mediconnect.db.CSV;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CartaMedicaController {
     private UsuarioController usuarioControlador = new UsuarioController();
@@ -45,6 +43,7 @@ public class CartaMedicaController {
      * Método que agrega una nueva enfermedad a la carta médica
      * 
      * @param nombreEnfermedad El nombre de la nueva enfermedad que será agregada
+     * @return Boolean que confirma si se agregó correctamente 
     */
     public boolean agregarEnfermedad(String nombreEnfermedad){
         for (String enfermedad : enfermedades) {
@@ -62,6 +61,7 @@ public class CartaMedicaController {
      * Método que agrega una nueva alergia a la carta médica
      * 
      * @param nombreAlergia El nombre de la nueva alergia que será agregada
+     * @return Boolean que confirma si se agregó correctamente 
     */
     public boolean agregarAlergia(String nombreAlergia){
         for (String alergia : alergias) {
@@ -78,7 +78,8 @@ public class CartaMedicaController {
     /**
      * Método que agrega una nuevo diagnóstico a la carta médica
      * 
-     * @param diagnostico El nuevo diagnóstico que será agregado
+     * @param nombreDiagnostico El nuevo diagnóstico que será agregado
+     * @return Boolean que confirma si se agregó correctamente 
     */
     public boolean agregarExamen(String nombreDiagnostico){
         for (String diagnostico : diagnosticos) {
@@ -100,9 +101,14 @@ public class CartaMedicaController {
      * @param correo El correo del paciente
      * @param password La contraseña del paciente
      * @param rol El rol de usuario (Paciente)
+     * @return Boolean que confirma si se registró correctamente 
     */
     public boolean guardarCartaMedica(String nombre, String apellido, String correo, String password, String rol){
         try {
+            if (cartaMedica.getAlergias().size() == 0 || cartaMedica.getEnfermedades().size() == 0 || cartaMedica.getExamenes().size() == 0){
+                return false;
+            }
+
             usuarioControlador.registrarUsuario(nombre, apellido, correo, password, rol, cartaMedica.getId());
             csv.guardarCartaMedica(cartaMedica);
 
@@ -112,134 +118,12 @@ public class CartaMedicaController {
         return true;
     }
 
+    
     /**
-     * Método que edita a una enfermeda de la carta médica
+     * Método que lista todas las enfermedades de un paciente específico
      * 
-     * @param nombreEnfermedad El nombre actual de la enfermedad a editar
-     * @param nuevaEnfermedad El nuevo nombre de la enfermedad a editar
-    */
-    public void editarEnfermedad(String nombreEnfermedad, String nuevaEnfermedad) {
-        ArrayList<String> enfermedades = cartaMedica.getEnfermedades();
-        boolean encontrada = false;
-
-        for (String enfermedad : enfermedades) {
-            if (enfermedad.equals(nombreEnfermedad)) {
-                encontrada = true;
-                enfermedades.set(enfermedades.indexOf(enfermedad), nuevaEnfermedad);
-                break;
-            }
-        }
-
-        if (!encontrada) {
-            // Mensaje: No se encontró la enfermedad a editar
-        }
-        cartaMedica.setEnfermedades(enfermedades);
-    }
-
-    /**
-     * Método que edita a una alergia de la carta médica
-     * 
-     * @param nombreAlergia El nombre actual de la alergia a editar
-     * @param nuevaAlergia El nuevo nombre de la alergia a editar
-    */
-    public void editarAlergia(String nombreAlergia, String nuevaAlergia){
-        ArrayList<String> alergias = cartaMedica.getAlergias();
-        boolean encontrada = false;
-
-        for (String alergia : alergias) {
-            if (alergia.equals(nombreAlergia)) {
-                encontrada = true;
-                alergias.set(alergias.indexOf(alergia), nuevaAlergia);
-                break;
-            }
-        }
-
-        if (!encontrada) {
-            // Mensaje: No se encontró la alergia a editar
-        }
-        cartaMedica.setAlergias(alergias);
-    }
-
-    /**
-     * Método que edita a un exámen de la carta médica
-     * 
-     * @param fecha La fecha en la cuál se redactó el diagnóstico
-     * @param medico El médico que redactó el diagnóstico
-     * @param nuevoDiagnostico El nuevo objeto Diagnostico
-    */
-    public void editarExamen(Date fecha, Medico medico, String nuevoDiagnostico){
-        
-    }
-
-    /**
-     * Método que elimina una enfermedad de la carta médica
-     * 
-     * @param nombreEnfermedad El nombre de la enfermedad que será eliminada
-    */
-    public void eliminarEnfermedad(String nombreEnfermedad) {
-        ArrayList<String> enfermedades = cartaMedica.getEnfermedades();
-        boolean encontrada = false;
-
-        for (String enfermedad : new ArrayList<>(enfermedades)) {
-            if (enfermedad.equals(nombreEnfermedad)) {
-                encontrada = true;
-                enfermedades.remove(enfermedad);
-            }
-        }
-
-        if (!encontrada) {
-            // Mensaje: No se encontró la enfermedad para ser eliminada
-        }
-        cartaMedica.setEnfermedades(enfermedades);
-    }
-
-    /**
-     * Método que elimina una alergia de la carta médica
-     * 
-     * @param nombreAlergia El nombre de la alergia que será eliminada
-    */
-    public void eliminarAlergia(String nombreAlergia){
-        ArrayList<String> alergias = cartaMedica.getAlergias();
-        boolean encontrada = false;
-
-        for (String alergia : new ArrayList<>(alergias)) {
-            if (alergia.equals(nombreAlergia)) {
-                encontrada = true;
-                alergias.remove(alergia);
-            }
-        }
-
-        if (!encontrada) {
-            // Mensaje: No se encontró la alergia para ser eliminada
-        }
-        cartaMedica.setAlergias(alergias);
-    }
-
-    /**
-     * Método que elimina un exámen de la carta médica
-     * 
-     * @param diagnosticoEliminar El objeto Diagnostico que será eliminado
-    */
-    public void eliminarExamen(String diagnosticoEliminar){
-        ArrayList<String> diagnosticos = cartaMedica.getExamenes();
-        boolean encontrado = false;
-
-        for (String diagnostico : new ArrayList<>(diagnosticos)) {
-            if (diagnostico.equals(diagnosticoEliminar)) {
-                diagnosticos.remove(diagnostico);
-                encontrado = true;
-            }
-        }
-
-        if (encontrado) {
-            cartaMedica.setExamenes(diagnosticos);
-        } else {
-            // Mensaje: No se encontró el exámen a eliminar
-        }
-    }
-
-    /*
-     * 
+     * @param idCarta El id de la carta médica de donde se tomarán los datos
+     * @return Un ArrayList de enfermedades
      */
     public ArrayList<String> obtenerEnfermedades(int idCarta) {
         ArrayList<CartaMedica> cartasMedicas;
@@ -262,8 +146,11 @@ public class CartaMedicaController {
         return enfermedades;
     }
 
-    /*
+    /**
+     * Método que lista todas las alergias de un paciente específico
      * 
+     * @param idCarta El id de la carta médica de donde se tomarán los datos
+     * @return Un ArrayList de alergias
      */
     public ArrayList<String> obtenerAlergias(int idCarta) {
         ArrayList<CartaMedica> cartasMedicas;
@@ -286,8 +173,11 @@ public class CartaMedicaController {
         return alergias;
     }
 
-    /*
+    /**
+     * Método que lista todas los exámenes de diagnósticos de un paciente específico
      * 
+     * @param idCarta El id de la carta médica de donde se tomarán los datos
+     * @return Un ArrayList de exámenes
      */
     public ArrayList<String> obtenerExamenes(int idCarta) {
         ArrayList<CartaMedica> cartasMedicas;

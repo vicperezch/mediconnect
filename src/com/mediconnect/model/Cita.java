@@ -5,11 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
-@author Diego Flores, Victor Pérez
-@version 2.0.0
-@creationDate 19/10/2023
-@lastModified 02/11/2023
-@description Clase que se encargara de modelar las citas
+ * @author Diego Flores, Victor Pérez
+ * @version 2.0.0
+ * @creationDate 19/10/2023
+ * @lastModified 02/11/2023
+ * @description Clase que se encargara de modelar las citas
 */
 public class Cita {
 

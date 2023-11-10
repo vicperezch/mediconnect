@@ -2,9 +2,9 @@ package com.mediconnect.model;
 
 /**
     * @author Juan Solís
-    * @version 1.0.0
+    * @version 1.0.5
     * @creationDate 15/10/2023
-    * @modificationDate 15/10/2023
+    * @modificationDate 09/11/2023
     * Esta clase modela a un Usuario para poder ser utilizado en el programa
 */
 
@@ -129,31 +129,6 @@ public class Usuario {
     */
     public void setRol(String rol) {
         this.rol = rol;
-    }
-
-
-    public void validarPassword(){
-
-    }
-
-
-    public void validarCorreo(){
-
-    }
-
-
-    public void validarRol(){
-
-    }
-
-
-    public void nuevoUsuario(){
-
-    }
-
-
-    public void login(){
-
     }
 
     /**

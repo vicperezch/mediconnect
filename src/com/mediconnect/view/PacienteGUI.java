@@ -33,6 +33,7 @@ public class PacienteGUI {
 
     /**
      * @description Constructor de la clase Paciente
+     * @param usuario El usuario paciente que actualmente está con sesión iniciada
      */
     public PacienteGUI(Paciente usuario) {
         btnCartaMedica.addActionListener(new ActionListener() {
@@ -71,6 +72,7 @@ public class PacienteGUI {
 
     /**
      * @description Método que se encarga de cargar la vista cuando esta es llamada
+     * @param user El usuario paciente que actualmente está con sesión iniciada
      */
     public void setVisible(Paciente user) {
         myFrame = new JFrame("MediConnect");

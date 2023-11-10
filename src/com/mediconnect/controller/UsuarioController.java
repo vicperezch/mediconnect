@@ -2,9 +2,9 @@ package com.mediconnect.controller;
 
 /**
     * @author Juan Solís
-    * @version 1.0.1
+    * @version 1.0.5
     * @creationDate 01/11/2023
-    * @modificationDate 07/11/2023
+    * @modificationDate 09/11/2023
     * Esta clase se encarga de llevar el control de la clase modelo de Usuario
 */
 
@@ -27,7 +27,6 @@ public class UsuarioController {
      * Método que verifica que el correo ingresado por el usuario sea válido
      * 
      * @param correo El nuevo correo ingresado por el usuario
-     *               y
      * @return Si el correo es válido o no lo es
      */
     public boolean formatoCorreoCorrecto(String correo) {
@@ -47,7 +46,6 @@ public class UsuarioController {
      * Método que verifica que el correo ingresado por el usuario aún no exista
      * 
      * @param correo El nuevo correo ingresado por el usuario
-     * 
      * @return Si el correo ya existe o aún no
      */
     public boolean correoExistente(String correo) {
@@ -70,7 +68,6 @@ public class UsuarioController {
      * Método codifica la contraseña ingresada por el usuario
      * 
      * @param password La contraseña ingresada por el usuario
-     * 
      * @return La contraseña codificada
      */
     public String codificaPassword(String password) {
@@ -81,7 +78,6 @@ public class UsuarioController {
      * Método que decodifica la contraseña ingresada por el usuario
      * 
      * @param password La contraseña ingresada por el usuario
-     * 
      * @return la contraseña decodificada
      */
     public String decodificarPassword(String password) {
@@ -92,12 +88,11 @@ public class UsuarioController {
     /**
      * Método registra un nuevo usuario en el programa
      * 
-     * @param nombre   El nombre del usuario
+     * @param nombre El nombre del usuario
      * @param apellido El apellido del usuario
-     * @param correo   El correo del usuario
+     * @param correo El correo del usuario
      * @param password La contraseña del usuario
-     * @param rol      El rol del usuario (Medico/Paciente)
-     * 
+     * @param rol El rol del usuario (Medico/Paciente)
      * @return Si el registro del usuario se llevó a cabo correctamente
      */
     public boolean registrarUsuario(String nombre, String apellido, String correo, String password, String rol,
@@ -133,9 +128,8 @@ public class UsuarioController {
     /**
      * Método que ingresa al programa a un usuario ya creado
      * 
-     * @param correo   Correo del usuario
+     * @param correo Correo del usuario
      * @param password Contraseña del usuario
-     * 
      * @return Si el inició de sesión se llevó a cabo correctamente
      */
     public boolean login(String correo, char[] password) {
@@ -161,7 +155,6 @@ public class UsuarioController {
      * mostrarle opciones especificas
      * 
      * @param correo El correo del usuario
-     * 
      * @return El usuario que inició sesión
      */
     public Usuario usuarioEnLogin(String correo) {
@@ -184,6 +177,13 @@ public class UsuarioController {
         return usuarioEnLogin;
     }
 
+    /**
+     * Método que busca a un usuario por nombre
+     * 
+     * @param nombre El nombre del usuario
+     * @param apellido El apellido del usuario
+     * @return El objeto usuario que coincide con los valores dados
+     */
     public Usuario usuarioPorNombre(String nombre, String apellido) {
         Usuario usuario = null;
 

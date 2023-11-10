@@ -13,9 +13,9 @@ import com.mediconnect.model.Usuario;
 
 /**
  * @author Nils Muralles
- * @version 1.0.1
+ * @version 1.0.5
  * @creationDate 02/11/2023
- * @modificationDate 02/11/2023
+ * @modificationDate 09/11/2023
  * @description Clase encargada de gestionar una instancia de RecetaMedica
  */
 public class RecetaMedicaController {
@@ -29,9 +29,9 @@ public class RecetaMedicaController {
     }
 
     /**
-     * Obtiene a los pacientes del CSV
-     * 
-     * @return
+     * Obtiene la lista de pacientes a partir de los datos almacenados en un archivo CSV
+     *
+     * @return ArrayList de String con los pacientes
      */
     public ArrayList<String> obtenerPacientes() {
         ArrayList<Usuario> usuarios;
@@ -53,6 +53,16 @@ public class RecetaMedicaController {
         return pacientes;
     }
 
+    /**
+     * Agrega una nueva receta médica para un paciente
+     *
+     * @param medico El médico que emite la receta
+     * @param paciente El nombre completo del paciente para el cual se emite la receta
+     * @param medicamentos La lista de medicamentos recetados
+     * @param justificacion La justificación o razón médica para la receta
+     * @param observaciones Observaciones adicionales relacionadas con la receta
+     * @return True si la receta se agregó correctamente, False si ocurrió algún error.
+     */
     public boolean agregarReceta(Usuario medico, String paciente, String medicamentos, String justificacion,
             String observaciones) {
         String nombrePaciente = paciente.split(" ")[0];
@@ -83,6 +93,11 @@ public class RecetaMedicaController {
         }
     }
 
+    /**
+     * Obtiene la última receta médica registrada
+     *
+     * @return La última receta médica o null si no se pueden leer las recetas o si no hay recetas disponibles
+     */
     public Receta obtenerUltimaReceta() {
         ArrayList<Receta> recetas;
         try {
@@ -95,6 +110,11 @@ public class RecetaMedicaController {
         return recetas.get(recetas.size() - 1);
     }
 
+    /**
+     * Obtiene la información de todas las recetas médicas
+     *
+     * @return ArrayList de String con la información de cada receta médica
+     */
     public ArrayList<String> obtenerRecetas() {
         ArrayList<Receta> recetas;
         ArrayList<String> infoRecetas = new ArrayList<String>();
@@ -123,8 +143,11 @@ public class RecetaMedicaController {
         return infoRecetas;
     }
 
-    /*
-     * 
+    /**
+     * Obtiene la información de todas las recetas médicas asociadas a un paciente específico
+     *
+     * @param idPaciente El identificador del paciente para el cual se desean obtener las recetas
+     * @return ArrayList de ArrayList de cadenas que representan la información detallada de cada receta médica del paciente
      */
     public ArrayList<ArrayList<String>> obtenerRecetasPaciente(int idPaciente) {
         ArrayList<Receta> recetas;
