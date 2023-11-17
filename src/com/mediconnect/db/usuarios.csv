@@ -1,1 +1,3 @@
 id,rol,correo,nombre,apellido,password,id_carta1,Medico
+1,Medico,flores@gmail.com,Diego,Flores,MTIzNA==,N/A
+2,Paciente,solis@gmail.com,Juan,Solis,MTIzNA==,5000
